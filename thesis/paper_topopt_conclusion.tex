@@ -1,0 +1,51 @@
+%
+% Conclusion
+%
+\section{Conclusion}
+\label{sec:topoptconclusion}
+
+We demonstrate how topology optimization can be applied to design the
+flow field of a periodical microfluidic channel. The objective
+function can be either a function of velocity components or a distance
+between flow maps. A probabilistic model is also proposed to
+approximate the solution of Advection-Diffusion equation on the
+cross-sections of the mixing channel. We demonstrate the feasibility
+of this model by reproducing the experiment results given in
+\cite{Stroock2002}. Through topology optimization, the channel
+structure is further improved and the mixing length is reduced by a
+factor around $30\%$ and $60\%$ for the herringbone and $3$-D
+structures, respectively.
+
+Although we believe a further improvement can be made by designing
+flow maps, it is shown by example $3$ that the local optimal structure
+to realize a flow map is not likely to be a solid (black/white) one.
+This suggests that if porous material is allowed in the fabrication of
+microfluidic channels, one would have much more freedom in realizing
+desired mixing protocols.
+
+As one has seen, we use optimization techniques to assist the design or the realization of a mixing
+protocol. The question may arise: is it possible to form an optimization problem such that the
+objective function is a measure of how good the mixing protocol is? We have no good answer so far.
+The difficulty we encounter is that there is no good measure about how well an operator is in terms
+of mixing. One can use variance or mix-norm \cite{Mezic2005} to measure whether the color on the
+cross-section of the channel is well mixed, but the link between this and a mixing protocol is
+still missing. A potential solution to this question is the second largest eigenvalue
+modulus (SLEV) \cite{Boyd2004} of the operator $A_n$. Clearly, for a fixed $n$, it determines how
+fast the Markov Chain converges to its invariant distribution, so does the dual process---the
+evolution of the color intensity to uniform. If one can minimize the SLEV of $A_n$ for one period of
+the mixing channel, this gives a better mixing channel in the worst case scenario---if the initial color distribution is in an eigenvector direction. However, for the mixing trajectory shown in Figure \ref{example2trajectory}, the SLEV certainly determines the stationary slope of these trajectories, but not the transient part, and the mixing distance is almost completely decided by the transient phenomena. In fact, it has been shown that when the Markov transition matrix is non-normal or one uses different norms, the transient phenomena may be unrelated to the spectra (eigenvalues) of $A_n$, and have nontrivial relation to the pesudospectra \cite{Lloyd2005}. The famous example is called ``cutoff phenomenon'' in finite Markov Chain studies \cite{Diaconis1996, Diaconis2005, LSaloff-Costt2004}, and it has some interesting relation to chaotic mixing \cite{numcutoff, symdyn}.
+
+Consider the mixing length shown in Figure \ref{example2trajectory}: when $\text{Pe}$ gets larger, the standard deviation stays high for a much longer
+time before it begins to drop. So even though we know the mixing length grows logarithmically with $\text{Pe}$,
+it does not mean we can cut the length of $x_{90}$ by half to get the mixing result by a factor
+$0.5$---it is worse than that. These kinds of multi-stage mixing trajectories have been widely observed
+and studied in chaotic map mixing.
+See \cite{Thiffeault2003-13, Thiffeault2003-309, Thiffeault2004, Tsang2005, Haynes2005}
+for examples. In \cite{numcutoff} the author studies Standard Map with small diffusion, and links
+this multi-stage behavior of mixing process to the well-known cutoff phenomenon. Numerical evidence is provided to show that when the diffusion goes to zero, the mixing trajectoreis of the Standard Map with small diffusion perform a cutoff. The sharp change in the mixing trajectory certainly
+describes the limit of chaotic mixing---it requires a minimal length for the mixing to occur.
+
+
+%: denote the standard deviation as $\delta$. One can define the cutoff time of the mixing process to be the time required for $\delta$ to drop to $0.25$, and the window size to be
+%the period from $\delta=0.45$ to $\delta=0.05$. The numerical evidence shows that for Standard map, when diffusion
+%goes to zero, the windows size divided by the cutoff time also goes to zero. 

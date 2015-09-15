@@ -1,0 +1,180 @@
+% basically this is a template file, you should be able to take it and
+% start running.
+
+% the philosophy behind this template is that each chapter or
+% chapterlike section goes in a separate file and you use the \include
+% command to input it into the final document.  The \includeonly
+% command can be used so you only need to work on one or two chapters at a
+% time (instead of having to either latex the entire book each time or
+% losing cross-references and page numbering)
+
+% copy this file and call it something like mythesis.tex
+
+%\documentclass[12pt]{report}
+%\documentclass[oneside,10pt,final]{report}
+\documentclass[twoside,10pt,final]{report}
+%\documentclass[twoside,10pt,draft]{report}
+% note that the documentclass can take other option such as
+% twoside - for double sided printing
+% openright - if double side  chapters always start on odd pages
+% openany - if double side chapters start on the next page even or odd
+% 12pt can be replaced by 11pt
+
+\usepackage{suthesis-2e}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{setspace}
+%\usepackage{vmargin}
+
+
+%\setpapersize{USletter}
+%\setmarginsrb{1.6in}{0.7in}{1.1in}{0.6in}
+%             {0.2in}{0.2in}{0.2in}{0.5in}
+
+\setstretch{1.213}
+
+\graphicspath{{../paper_topopt/figures/}
+              {../paper_numcutoff/figures/}
+              {../paper_symdyn/figures/}
+             }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\prob}{\mathbf{Prob}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example_base}{Example}
+\newenvironment{example}{\begin{example_base}}
+   {\hspace{\stretch{1}}$\lozenge$\end{example_base}}
+
+
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{Todo}}
+\framebox{\begin{minipage}[c]{0.90 \textwidth}
+\tt \flushleft #1 \end{minipage}}\vspace{5 mm}\par}
+
+\renewcommand{\todo}[1]{}
+
+
+\newcommand{\clearemptydoublepage}
+ {\newpage{\thispagestyle{plain}\cleardoublepage}}
+
+
+
+%% uncomment the following and create mythesis-macros.sty for all your
+%% own macros.  This keeps this top level file looking fairly neat.
+% \usepackage{mythesis-macros}
+
+%% certain types of theses require special title page format.  See the
+%% style file for the full list.  An example would be that for some of
+%% the language departments. 
+% \dualthesis \dept{Asian Languages} \languagemajor{Korean} 
+%% or education
+% \educationthesis
+
+%\includeonly{../paper_numcutoff/paper_numcutoff_body,../paper_numcutoff/paper_topopt_body}
+
+
+
+\begin{document}
+
+    \title{Cutoffs in Chaotic Map Mixing and Topology Optimization of Microfluidic Channels}
+    \author{Tzu-Chen Liang}
+    \dept{\\Aeronautics and Astronautics} 
+    \principaladviser{Matthew West}
+    \firstreader{Sanjay Lall}
+    \secondreader{Michael Saunders}
+    \submitdate{March 2008}
+    \tablespagefalse
+    
+    
+    \beforepreface
+    \prefacesection{Preface}
+     \input{preface}
+
+
+    \newpage
+
+
+    \prefacesection{Acknowledgements}
+      \input{acknowledgement}
+
+    \afterpreface
+
+
+ 
+
+
+
+
+
+
+% now for the body of the thesis, modify the number of these lines as needed
+
+% this includes chapter1.tex which should start with a \chapter{...}
+% command 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+\input{thesis_tzuchen_introduction}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Optimized Mixing in Microfluidic Channels}
+\input{thesis_chapter_topopt_introduction}
+\input{paper_topopt_body}
+\input{paper_topopt_conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Numerical Evidence of Cutoffs]{Numerical Evidence of Cutoffs in Chaotic Mixing}
+\input{thesis_chapter_numcutoff_introduction}
+\input{paper_numcutoff_body}
+\input{paper_numcutoff_conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Cutoffs and Symbolic Dynamics]{Cutoff Phenomenon and the Mixing Property of Chaotic Maps}
+\input{thesis_chapter_symdyn_introduction}
+\input{paper_symbolicdynamics_body}
+\input{paper_symbolicdynamics_conclusion}
+
+%\include{../paper_symdyn/paper_symbolicdynamics_body}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\chapter{Conclusion}
+%\include{thesis_tzuchen_conclusion}
+
+
+
+% and the end material
+
+\appendix
+
+%\include{appendix1}
+%\include{appendix2}
+%\include{appendix3}
+
+
+
+%\include{bibliography}
+
+\nocite{*}
+
+
+    %\bibliographystyle{plain}
+     \bibliographystyle{abbrv}
+    \bibliography{../bib/mixingbib}
+
+
+\end{document}
+

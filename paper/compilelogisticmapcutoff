@@ -1,0 +1,7 @@
+latex logisticmapcutoff.tex
+bibtex logisticmapcutoff
+latex logisticmapcutoff.tex
+
+dvipdf logisticmapcutoff.dvi
+evince logisticmapcutoff.pdf
+

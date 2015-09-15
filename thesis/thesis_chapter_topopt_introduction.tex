@@ -1,0 +1,68 @@
+%
+% Introduction of Chapter topopt 
+%
+
+
+We develop a topology optimization methodology for optimizing the
+shape pressure-driven microfluidic channels to maximize the passive
+mixing rate of advected tracers. The optimization procedure uses a
+relaxation of Stokes flow by allowing a permeable structure and the
+objective can be a function of either the fluid velocity field or the
+particle map from inlet to outlet. We present two new channel designs:
+one that is an optimized version of the herringbone mixer of Stroock
+et al., and one that mixes more quickly by using a fully 3D structure
+in the channel center. These channels deliver approximately 30\% and
+60\% reductions in the 90\% mixing lengths. To compare our numerical
+simulations to experiments we approximate the inlet-outlet particle
+map by a Markov Chain and show that this cheaply approximates the true
+stochastic map.
+
+%In this chapter, we focus on the design and optimization of passive microfluidic mixing channels. A microfluidic mixing channel typically has
+%cross-section dimension $ell\sim 100\mu m$, and Reynolds number $\text{Re}=U\ell/\nu$ is less than $100$ \cite{Stroock2002} ($U$ is the average
+%velocity of the liquid and $\nu$ is the kinematic viscosity of the fluid).  Fluid flow on this scale is highly laminar and the mixing of
+%materials between streams is purely diffusive. The dimensionless number that controls the length of the channel required for mixing is
+%P\'{e}clet number ($\text{Pe}= U\ell/D$ where $D$ is the molecular diffusivity). For a pressure-driven mixing channel the mixing length can be
+%expected to grow linearly with $\text{Pe}$ and is usually much more than $1\,\text{cm}$. Hence various designs are proposed to stir the
+%flow inside the channel and produce transverse velocities to enhance the mixing \cite{Stroock2002, Ottino2004Science, Wiggins2004}.
+
+%The mixing problem has been linked to chaotic mixing protocols, which
+%are believed to have the best mixing results due to the stretching and
+%folding features of chaotic maps. A typical way to realize chaotic
+%mixing is through the design of linked twist maps, and has been
+%studied in \cite{Wiggins2004}. However, there is no direct way to
+%realize the designed linked twist map in a mixing channel, either by
+%passive structure or active mechanisms such as variable-frequency
+%pumps or internal moving components. In this paper, we use the
+%techniques developed in topology optimization to find the internal
+%structure of a mixing channel to realize a desired flow field or flow
+%map. The results can be applied to mixing channel design when the
+%desired mixing protocol is known.
+
+
+%Topology optimization has been applied to the design of optimal shapes
+%of pipes or diffusers such that the total potential power drop is
+%minimized \cite{Evgrafov2005, Borrvall2003}. Darcey flow is used to
+%simulate the flow inside porous material and form a relaxation. The
+%design parameters in this formulation are the permeability of the
+%material on a spatial grid. In this case, the relaxed problem is still
+%non-convex, but can be solved by means of sequential separable and
+%convex programming. A two-step solution procedure is thus applied to
+%find a black/white solution with permeability either $0$ or infinity
+%at a point .
+
+%In this chapter we use the same relaxation strategy to formulate the
+%mixing channel design as a topology optimization problem. The
+%objective function we use is a function of the velocity field or a map
+%between the inlet and the outlet of one period of the channel. It is a
+%nonlinear optimization problem and a sub-gradient method is developed
+%to find the local minimum of the objective function. We do not
+%consider the fabrication issue explicitly when solving the topology
+%optimization problem.
+
+In section \ref{sec:opt} we describe the mathematical model of mixing
+channels and how to form the topology optimization problem using a
+relaxation of Stokes flow. Section \ref{sec:simu} discusses the
+simulation issue, and a Markov chain model is proposed to approximate
+the solution of the advection-diffusion equation to evolve the color
+intensity field. Results are given in section \ref{sec:topoptresults} and 
+conclusions are in section \ref{sec:topoptconclusion}.

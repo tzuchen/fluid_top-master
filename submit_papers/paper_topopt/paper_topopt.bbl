@@ -1,0 +1,193 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{Burns1998}
+Burns MA, Johnson BN, Brahmasandra SN, Handique K, Webster JR, Krishnan M,
+  Sammarco TS, Man PM, Jones D, Heldsinger D, \emph{et~al.}. An integrated
+  nanoliter {D}{N}{A} analysis device. \emph{Science}  1998;
+  \textbf{282}(5388):484--487. DOI:10.1126.
+
+\bibitem{DavidJ2002}
+Beebe DJ, Mensing GA, Walker GM. Physics and applications of microfluidics in
+  biology. \emph{Annual Review of Biomedical Engineering}  2002;
+  \textbf{4}:261--286.
+
+\bibitem{Andersson2000}
+Andersson H, van~der Wijngaart W, Enoksson P, Stemme G. Micromachined
+  flow-through filter-chamber for chemical reactions on beads. \emph{Sensors
+  and Actuators B}  2000; \textbf{67}:203--208.
+
+\bibitem{Sammarco1999}
+Sammarco TS, Burns MA. Thermocapillary pumping of discrete drops in
+  microfabricated analysis devices. \emph{AIChE}  1999; \textbf{45}:350--366.
+
+\bibitem{weigl2003}
+Weigl BH, Bardell RL, Cabrera C. Lab-on-a-chip for drug development.
+  \emph{Advanced Drug Delivery Reviews}  2003; \textbf{55}(3):349--377.
+
+\bibitem{Stone2004}
+Stone HA, Stroock AD, Ajdari A. Engineering flows in small devices:
+  Microfluidics toward a lab-on-a-chip. \emph{Annual Review of Fluid Mechanics}
+   2004; \textbf{36}:381--411. DOI:10.1146.
+
+\bibitem{Yang2000}
+Yang Z, Goto H, Matsumoto M, Maeda R. Ultrasonic micromixer for microfluidic
+  systems. \emph{The Thirteenth Annual International Conference on Micro
+  Electro Mechanical Systems}, 2000; 80--85.
+
+\bibitem{Deshmukh2000}
+Deshmukh A, Liepmann D. Continuous microfluidic mixing using pulsatile
+  micropumps. \emph{American Physical Society 53rd Annual Meeting of the
+  Division of Fluid Dynamics}, 2000.
+
+\bibitem{Stroock2002}
+Stroock AD, Dertinger SKW, Ajdari A, Mezi{\'c} I, Stone HA, Whitesides GM.
+  Chaotic mixer for microchannels. \emph{Science}  2002;
+  \textbf{295}(5555):647--651, \doi{10.1126/science.1066238}.
+
+\bibitem{Ottino2004Science}
+Ottino JM, Wiggins S. Designing optimal micromixers. \emph{Science}  2004;
+  \textbf{305}(5683):485--486, \doi{10.1126/science.1099343}.
+
+\bibitem{Wiggins2004}
+Wiggins S, Ottino JM. Foundations of chaotic mixing. \emph{Philosophical
+  Transactions of the Royal Society A: Mathematical, Physical and Engineering
+  Sciences}  2004; \textbf{362}(1818):937--970.
+
+\bibitem{Bendsoe2003}
+Bends{\o}e MP, Sigmund O. \emph{Topology Optimization: Theory, Methods, and
+  Applications}. Springer: New York, 2003. ISBN 3540429921.
+
+\bibitem{BenTal1997}
+Ben-Tal A, Nemirovski A. Robust truss topology design via semidefinite
+  programming. \emph{SIAM Journal on Optimization}  1997;
+  \textbf{7}(4):991--1016, \doi{http://dx.doi.org/10.1137/S1052623495291951}.
+
+\bibitem{Evgrafov2005}
+Evgrafov A. The limits of porous materials in the topology optimization of
+  {S}tokes flows. \emph{Applied Mathematics and Optimization}  2005;
+  \textbf{52}(3):263--277, \doi{10.1007/s00245-005-0828-z}.
+
+\bibitem{Borrvall2003}
+Borrvall T, Petersson J. Topology optimization of fluids in {S}tokes flow.
+  \emph{International Journal for Numerical Methods in Fluids}  2003;
+  \textbf{41}(1):77--107, \doi{10.1002/ d.426}.
+
+\bibitem{Dellnitz1999}
+Dellnitz M, Junge O. On the approximation of complicated dynamical behavior.
+  \emph{SIAM Journal on Numerical Analysis}  1999; \textbf{36}(2):491--515.
+
+\bibitem{Dellnitz2002}
+Dellnitz M, Junge O. Set oriented numerical methods for dynamical systems.
+  \emph{Handbook of Dynamical Systems II: Towards Applications}. World
+  Scientific Publishing, 2002; 221--264.
+
+\bibitem{Froyland1998}
+Froyland G. Approximating physical invariant measures of mixing dynamical
+  systems in higher dimensions. \emph{Nonlinear Analysis, Theory, Methods and
+  Applications}  1998; \textbf{32}(7):831--860.
+
+\bibitem{Froyland1999}
+Froyland G. Markov modelling for random dynamical systems. \emph{Proceedings of
+  Equadiff 99, Berlin, Germany}, 1999.
+
+\bibitem{Froyland2001}
+Froyland G. Extracting dynamical behaviour via {M}arkov models. \emph{Nonlinear
+  Dynamics and Statistics}. Birkh\"{a}user: Basel, 2001; 283--324.
+
+\bibitem{Jameson1999}
+Reuther JJ, Jameson A, Alonso JJ, Rimlinger MJ, Saunders D. Constrained
+  multipoint aerodynamic shape optimization using an adjoint formulation and
+  parallel computers, part 1. \emph{Journal of Aircraft}  1999;
+  \textbf{36}(1):51--60.
+
+\bibitem{Errico1997}
+Errico RM. What is an adjoint model? \emph{Bulletin of the American
+  Meteorological Society}  1997; \textbf{78}:2577–--2591.
+
+\bibitem{ChorinHald2}
+Chorin AJ, Hald OH. \emph{Stochastic Tools in Mathematics and Science}.
+  Springer Science and Business, 2006.
+
+\bibitem{ChorinHald1}
+Chorin AJ, Hald OH, Kupferman R. Optimal prediction and the {M}ori-{Z}wanzig
+  representation of irreversible processes. \emph{Proceedings of the National
+  Academy of Sciences}  2000; \textbf{97}:2968--2973.
+
+\bibitem{mori1965tcm}
+Mori H. Transport, collective motion, and {B}rownian motion. \emph{Prog. Theor.
+  Phys}  1965; \textbf{33}(3):423--455.
+
+\bibitem{zwanzig1980pnt}
+Zwanzig R. Problems in nonlinear transport theory. \emph{Systems far from
+  equilibrium}, Garrido L (ed.). Springer: Berlin, 1980.
+
+\bibitem{evans2008smn}
+Evans D, Morriss G. \emph{Statistical mechanics of nonequilibrium liquids}.
+  Cambridge University Press, 2008.
+
+\bibitem{BeLaLiWe2009}
+Beck CL, Lall S, Liang T, West M. Model reduction, optimal prediction, and the
+  {M}ori-{Z}wanzig representation of {M}arkov chains. \emph{Proceedings of the
+  48th IEEE Conference on Decision and Control}, 2009; 3282--3287.
+
+\bibitem{numcutoff}
+Liang T, West M. Numerical evidence of cutoffs in chaotic mixing by the
+  standard map 2011. (preprint).
+
+\bibitem{Mezic2005}
+Mathew G, Mezi{\'c} I, Petzold L. A multiscale measure for mixing.
+  \emph{Physica D}  2005; \textbf{211}(1-2):23--46.
+
+\bibitem{Boyd2004}
+Boyd S, Diaconis P, Xiao L. Fastest mixing {M}arkov {C}hain on a graph.
+  \emph{SIAM Review}  2004; \textbf{46}(4):667--689.
+
+\bibitem{Lloyd2005}
+Trefethen LN, Embree M. Further examples and applications. \emph{Spectra and
+  Pseudospectra}. Princeton University Press: Princeton, 2005; 508--525.
+
+\bibitem{Diaconis1996}
+Diaconis P. The cutoff phenomena in finite {M}arkov {C}hains. \emph{The
+  Proceedings of the National Academy of Sciences}, vol.~93, 1996; 1659--1664.
+
+\bibitem{Diaconis2005}
+Diaconis P, Saloff-Coste L. Separation cut-offs for death and birth chain.
+  \emph{Annals of Applied Probability}  2006; \textbf{16}(4):2098--2122.
+
+\bibitem{LSaloff-Costt2004}
+Saloff-Coste L. Random walks on finite groups. \emph{Probability on Discrete
+  Structures}, \emph{Encyclopaedia of Mathematical Sciences}, vol. 110.
+  Springer: New York, 2004; 263--346.
+
+\bibitem{symdyn}
+Liang TC, West M. The cutoff phenomenon and mixing by chaotic maps 2011.
+  (preprint).
+
+\bibitem{Thiffeault2003-13}
+Thiffeault JL, Childress S. Chaotic mixing in a torus map. \emph{CHAOS}  2003;
+  \textbf{13}(2):502--507.
+
+\bibitem{Thiffeault2003-309}
+Thiffeault JL. Advection-diffusion in {L}agrangian coordinates. \emph{Physics
+  Letters A}  2003; \textbf{309}(5):415--422.
+
+\bibitem{Thiffeault2004}
+Thiffeault JL. Scalar decay in chaotic mixing. \emph{Transport in Geophysical
+  Flows: Ten Years After, Proceedings of the Grand Combin Summer School}, 2004.
+
+\bibitem{Tsang2005}
+Tsang YK, Antonsen TM Jr, Ott E. Exponential decay of chaotically advected
+  passive scalars in the zero diffusivity limit. \emph{Physical Review E}
+  2005; \textbf{71}:066\,301.
+
+\bibitem{Haynes2005}
+Haynes PH, Vanneste J. What controls the decay of passive scalars in smooth
+  flows? \emph{Physics of Fluids}  2005; \textbf{17}:097\,103.
+
+\end{thebibliography}

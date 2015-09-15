@@ -1,0 +1,133 @@
+%
+% Introduction
+%
+\section{Introduction}
+\label{sec:topoptintro}
+
+\todo{MW: when citing in a paragraph \cite{DavidJ2002, Stroock2002}
+  like this, we leave a space before the cite and put multiple
+  citations in the same cite separated by commas.}
+
+\todo{MW: inside paragraph titles we use mixed case (first word
+  capitalized, then all lowercase).}
+
+\todo{MW: Following Knuth, we should do units like this: $p =
+  20\,\text{kg}\,\text{m}\,\text{s}^{-1}$ or $v =
+  10\,\text{m}/\text{s}$. I tend to prefer using the first form.}
+
+\paragraph{Microfluidic mixing channels.}
+Microfluidic systems control and manipulate liquids in microliter or nanoliter amounts. The study of microfluidics emerged in the 1990s and
+is now widely applied in various fields such as the development of DNA chips \cite{Burns1998}, molecular biology \cite{DavidJ2002},
+chemical reactions \cite{Andersson2000}, transfers of small volumes of materials \cite{Sammarco1999}, and lab-on-a-chip technology
+\cite{weigl2003,Stone2004}. One of the challenges in microfluidics is the design of mixing channels, whose objective is to thoroughly mix
+two or more different liquids. Although the mixers designed by using active components like micro-pumps to stir the flow have very
+promising results \cite{Yang2000,Deshmukh2000}, passive mixing devices have advantages in manufacturing simplicity and price.
+
+In this paper, we focus on the design and optimization of passive microfluidic mixing channels. A microfluidic mixing channel typically has
+cross-section dimension $\ell\sim 100\mu m$, and Reynolds number $\text{Re}=U\ell/\nu$ is less than $100$ \cite{Stroock2002} ($U$ is the average
+velocity of the liquid and $\nu$ is the kinematic viscosity of the fluid).  Fluid flow on this scale is highly laminar and the mixing of
+materials between streams is purely diffusive. The dimensionless number that controls the length of the channel required for mixing is
+P\'{e}clet number ($\text{Pe}= U\ell/D$ where $D$ is the molecular diffusivity). For a pressure-driven mixing channel the mixing length can be
+expected to grow linearly with $\text{Pe}$ and is usually much more than $1\,\text{cm}$. Hence various designs are proposed to stir the
+flow inside the channel and produce transverse velocities to enhance the mixing \cite{Stroock2002, Ottino2004Science, Wiggins2004}.
+
+The mixing problem has been linked to chaotic mixing protocols, which
+are believed to have the best mixing results due to the stretching and
+folding features of chaotic maps. A typical way to realize chaotic
+mixing is through the design of linked twist maps, and has been
+studied in \cite{Wiggins2004}. However, there is no direct way to
+realize the designed linked twist map in a mixing channel, either by
+passive structure or active mechanisms such as variable-frequency
+pumps or internal moving components. In this paper, we use the
+techniques developed in topology optimization to find the internal
+structure of a mixing channel to realize a desired flow field or flow
+map. The results can be applied to mixing channel design when the
+desired mixing protocol is known.
+
+
+\paragraph{Topology optimization.}
+A typical topology optimization problem is to distribute a given amount of material in a design domain subject to load and support
+conditions such that the stiffness of the structure is maximized \cite{Bendsoe2003}. The design parameters are usually the spatial
+distribution of the material. Even though the optimal solution is in general quite sparse in space, the number of variables is often
+inevitably large in the formulation. Some problems, such as truss topology design, can be formulated as a convex optimization
+problems \cite{BenTal1997} by relaxing the material density to be progressive and solved by efficient algorithms. The optimal solution of
+the relaxed optimization is shown to be a black/white solution and thus also the optimal solution of the original problem. In other cases
+when the problem has no convex formulation, nonlinear optimization techniques need to be applied and it is in general hard.
+
+\todo{MW: We should phrase the use of Darcey flow models as a
+  relaxation of the true optimization problem. Do the papers below use
+  $L^1$ norms or something to ensure that the optimum solution is
+  black/white? We should say something clearer about when the optimum
+  of the relaxed problem is also the optimum of the unrelaxed
+  problem.}
+
+\todo{TC: The relaxation and the non-convexity are two different but
+related issues. In truss design, we have convex relaxation, and so the
+solution is optimal for both relaxed and original problem. In the
+fluid problem, even we do relaxation, it is sill non-convex.}
+
+\todo{TC:``by means of sequential separable and convex programming''
+is the terminology used by the paper. It means at each iteraiton, the
+permeability is constrained in some small range and the objective
+function is expanded locally as a linear function to make the problem
+convex}
+
+\todo{TC: ``the two-step solution procedure'' also used in the paper:
+first step, find a gray solution, second step, use the solution as a
+initial guess and tune a parameter to make the optimization to tend to
+form a black/white solution. They claim this is to avoid local
+optimum.}
+
+Topology optimization has been applied to the design of optimal shapes
+of pipes or diffusers such that the total potential power drop is
+minimized \cite{Evgrafov2005, Borrvall2003}. Darcey flow is used to
+simulate the flow inside porous material and form a relaxation. The
+design parameters in this formulation are the permeability of the
+material on a spatial grid. In this case, the relaxed problem is still
+non-convex, but can be solved by means of sequential separable and
+convex programming. A two-step solution procedure is thus applied to
+find a black/white solution with permeability either $0$ or infinity
+at a point .
+
+In this paper we use the same relaxation strategy to formulate the
+mixing channel design as a topology optimization problem. The
+objective function we use is a function of the velocity field or a map
+between the inlet and the outlet of one period of the channel. It is a
+nonlinear optimization problem and a sub-gradient method is developed
+to find the local minimum of the objective function. We do not
+consider the fabrication issue explicitly when solving the topology
+optimization problem.
+
+\todo{MW: I'm a bit nervous about the following sentence, so maybe we
+  should just leave it out: ``However, the resultant structures are
+  reasonable to fabricate by current technology.''}
+
+\todo{TC: Agree.}
+
+\paragraph{The simulation of Advection-Diffusion equation.}
+Another challenge in the design of microfluidic mixing channels is
+that there is no clear measure of how well a channel mixes. In
+experiments it is common to measure the variance of colored liquids on
+the cross-section of the channel to see how well they are mixed
+\cite{Stroock2002}. However, when doing simulation, this corresponds
+to solve the Advection-Diffusion equation for a 3-D flow field, which
+is expensive. The problem that there is no clear link between the
+variance of the liquid on a cross-section and the channel structures
+remains hard so far. In this paper, we develop a Markov Chain model to
+approximate the mixing process.  Similar approaches can be found in,
+for example, \cite{Dellnitz1999, Dellnitz2002, Froyland1998,
+Froyland1999, Froyland2001}. It is a cheap way to replace the solving
+of Advection-Diffusion equation and can let one observe the mixing
+process and measure the variance of the colored field easily. This
+model is by no means an accurate solution of the Advection-Diffusion
+equation, but it captures the most important factors of the chaotic
+mixing: stretching, folding and molecular diffusion.
+
+\paragraph{Outline.}
+In section \ref{sec:opt} we describe the mathematical model of mixing
+channels and how to form the topology optimization problem using a
+relaxation of Stokes flow. Section \ref{sec:simu} discusses the
+simulation issue and a Markov chain model is proposed to approximate
+the solution of the Advection-Diffusion equation to evolve the color
+intensity field. Results are given in section \ref{sec:topoptresults} and
+finally conclusions are in section \ref{sec:topoptconclusion}.

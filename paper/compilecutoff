@@ -1,0 +1,7 @@
+latex cutoff.tex
+bibtex cutoff
+latex cutoff.tex
+
+dvipdf cutoff.dvi
+evince cutoff.pdf
+

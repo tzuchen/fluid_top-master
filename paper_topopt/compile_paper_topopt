@@ -1,0 +1,7 @@
+latex paper_topopt.tex
+bibtex paper_topopt
+latex paper_topopt.tex
+
+dvipdf paper_topopt.dvi
+evince paper_topopt.pdf
+

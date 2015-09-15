@@ -1,0 +1,141 @@
+\begin{thebibliography}{10}
+
+\bibitem{Diaconis1986}
+D.~Aldous and P.~Diaconis.
+\newblock Shuffling cards and stopping times.
+\newblock {\em American Mathematical Monthly}, 93(5):333--348, 1986.
+
+\bibitem{Diaconis1987}
+D.~Aldous and P.~Diaconis.
+\newblock Strong uniform times and finite random walks.
+\newblock {\em Advances in Applied Mathematics}, 8:69--97, 1990.
+
+\bibitem{Antonsen1996}
+T.~M. Antonsen, Jr., Z.~Fan, E.~Ott, and E.~Garcia-Lopez.
+\newblock The role of chaotic orbits in the determination of power spectra of
+  passive scalars.
+\newblock {\em Physical Fluids}, 8(11):3094--3104, 1996.
+
+\bibitem{Diaconis1992}
+D.~Bayer and P.~Diaconis.
+\newblock Trailing the dovetail shuffle to its lair.
+\newblock {\em The Annals of Applied Probability}, 2(2):294--313, 1992.
+
+\bibitem{Chen2006}
+G.-Y. Chen.
+\newblock {\em The Cutoff Phenomenon for Finite Markov Chains}.
+\newblock PhD thesis, Cornell University, 2006.
+
+\bibitem{Diaconis1996}
+P.~Diaconis.
+\newblock The cutoff phenomena in finite {M}arkov {C}hains.
+\newblock In {\em The Proceedings of the National Academy of Sciences},
+  volume~93, pages 1659--1664, 1996.
+
+\bibitem{Diaconis1990}
+P.~Diaconis, R.~L. Graham, and J.~A. Morrison.
+\newblock Asymptotic analysis of a random walk on a hypercube with many
+  dimensions.
+\newblock {\em Random Structures and Algorithms}, 1(1):51--72, 1990.
+
+\bibitem{Diaconis2005}
+P.~Diaconis and L.~Saloff-Coste.
+\newblock Separation cut-offs for death and birth chain.
+\newblock {\em Annals of Applied Probability}, 16(4):2098--2122, 2006.
+
+\bibitem{Diaconis1981}
+P.~Diaconis and M.~Shahshahani.
+\newblock Generating a random permutation with random transportations.
+\newblock {\em Z. Wahrsch. Verw. Gebiete}, 57(2):159--179, 1981.
+
+\bibitem{Fereday2002}
+D.~R. Fereday, P.~H. Haynes, A.~Wonhas, and J.~C. Vassilicos.
+\newblock Scalar variance decay in chaotic advection and {B}atchelor-regime
+  turbulence.
+\newblock {\em Physical Review E}, 65(3):035301, 2002.
+
+\bibitem{Holmes1983}
+J.~Guckenheimer and P.~Holmes.
+\newblock {\em Nonlinear Oscillations, Dynamical Systems, and Bifurcations of
+  Vector Fields}.
+\newblock Springer-Verlag, New York, 1983.
+
+\bibitem{numcutoff}
+T.~Liang and M.~West.
+\newblock Numerical evidence of cutoffs in chaotic mixing by the standard map.
+\newblock (preprint), 2011.
+
+\bibitem{topopt}
+T.-C. Liang and M.~West.
+\newblock Optimized mixing in microfluidic channels.
+\newblock (preprint), 2011.
+
+\bibitem{Ottino2004Science}
+J.~M. Ottino and S.~Wiggins.
+\newblock Designing optimal micromixers.
+\newblock {\em Science}, 305(5683):485--486, 2004.
+
+\bibitem{Ottino2004}
+J.~M. Ottino and S.~Wiggins.
+\newblock Introduction: Mixing in microfluidics.
+\newblock {\em Philosophical Transactions of the Royal Society A: Mathematical,
+  Physical and Engineering Sciences}, 362(1818):923--935, 2004.
+
+\bibitem{Rothstein1999}
+D.~Rothstein, E.~Henry, and J.~P. Gollub.
+\newblock Persistent patterns in transient chaotic fluid mixing.
+\newblock {\em Letters to Nature}, 401:770--772, 1999.
+
+\bibitem{LSaloff-Costt2004}
+L.~Saloff-Coste.
+\newblock Random walks on finite groups.
+\newblock In {\em Probability on Discrete Structures}, volume 110 of {\em
+  Encyclopaedia of Mathematical Sciences}, pages 263--346. Springer, New York,
+  2004.
+
+\bibitem{Stroock2002}
+A.~D. Stroock, S.~K.~W. Dertinger, A.~Ajdari, I.~Mezi{\'c}, H.~A. Stone, and
+  G.~M. Whitesides.
+\newblock Chaotic mixer for microchannels.
+\newblock {\em Science}, 295(5555):647--651, 2002.
+
+\bibitem{Thiffeault2004}
+J.-L. Thiffeault.
+\newblock Scalar decay in chaotic mixing.
+\newblock In {\em Transport in Geophysical Flows: Ten Years After, Proceedings
+  of the Grand Combin Summer School}, 2004.
+
+\bibitem{Thiffeault2003-13}
+J.-L. Thiffeault and S.~Childress.
+\newblock Chaotic mixing in a torus map.
+\newblock {\em CHAOS}, 13(2):502--507, 2003.
+
+\bibitem{Lloyd2005}
+L.~N. Trefethen and M.~Embree.
+\newblock Further examples and applications.
+\newblock In {\em Spectra and Pseudospectra}, pages 508--525. Princeton
+  University Press, Princeton, 2005.
+
+\bibitem{Tsang2005}
+Y.-K. Tsang, T.~M. Antonsen, Jr., and E.~Ott.
+\newblock Exponential decay of chaotically advected passive scalars in the zero
+  diffusivity limit.
+\newblock {\em Physical Review E}, 71:066301, 2005.
+
+\bibitem{Voth2002}
+G.~A. Voth, G.~Haller, and J.~P. Gollub.
+\newblock Experimental measurements of stretching fields in fluid mixing.
+\newblock {\em Physical Review Letters}, 88(25), 2002.
+
+\bibitem{Wiggins1990}
+S.~Wiggins.
+\newblock {\em Introduction to Applied Nonlinear Dynamical Systems and Chaos}.
+\newblock Springer, New York, 1990.
+
+\bibitem{Wiggins2004}
+S.~Wiggins and J.~M. Ottino.
+\newblock Foundations of chaotic mixing.
+\newblock {\em Philosophical Transactions of the Royal Society A: Mathematical,
+  Physical and Engineering Sciences}, 362(1818):937--970, 2004.
+
+\end{thebibliography}

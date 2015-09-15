@@ -1,0 +1,67 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lemma}
+Let $\nu_{\mu_n}$ be any distribution such that $\nu_{\mu_n}(x)=0$ for all $x\in[\mu_n,1]$, then
+\begin{eqnarray}
+     |\nu_{\mu_n}-\bar{\omega}|_{TV} \ge |\omega_{\mu_{n-1}}^0 -\bar{\omega}|_{TV}
+\end{eqnarray}
+\end{lemma}
+
+\paragraph{Proof}
+We need the following two inequalities
+\begin{eqnarray}
+\sin^{-1}(\sqrt{x}) < \frac{\pi}{2}\sqrt{\frac{x}{2}} \mbox{  , for } 0<x<\frac{1}{2}\\
+\sin^{-1}(\sqrt{x}) > \sqrt{x}  \mbox{  , for } 0<x<1
+\end{eqnarray}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%main proof here
+\begin{eqnarray}
+|\nu_{\mu_n}-\bar{\omega}|_{TV} &=  & \frac{1}{2} \int_0^1 |\nu_{\mu_n}-\bar{\omega}| dx \nonumber\\
+                                &\ge&  \int_{\mu_n}^1 \bar{\omega} dx  \nonumber\\
+                                &=  &  \int_{\mu_{n-1}}^1 \bar{\omega} dx +
+                                      \int_{\mu_n}^{\mu_{n-1}} \bar{\omega} dx                              
+\end{eqnarray}
+Then we have
+\begin{eqnarray}
+ \int_{\mu_n}^{\mu_{n-1}} \bar{\omega} dx 
+   &\ge &  \int_{\frac{\mu_{n-1}}{2}}^{\mu_{n-1}} \bar{\omega} dx \nonumber \\
+   & =  & \frac{2}{\pi}\sin^{-1}(\sqrt{\mu_{n-1}}) - 
+        \frac{2}{\pi}\sin^{-1}\left(\sqrt{\frac{\mu_{n-1}}{2}}\right)  \nonumber\\ 
+   &\ge & \frac{2}{\pi}\sqrt{\mu_{n-1}} - \frac{1}{2}\sqrt{\mu_{n-1}}  \nonumber \\ 
+   & =  &  \left(\frac{2}{\pi} - \frac{1}{2}\right)\sqrt{\mu_{n-1}}
+\end{eqnarray}
+Now Let $s = \frac{1- \sqrt{1-\frac{4 \mu_{n-1}^2}{\pi^2}}}{2}$. Consider the right hand side of the equation
+
+\begin{eqnarray}
+|\omega_{\mu_{n-1}}^0 -\bar{\omega}|_{TV}
+   &=  & \int_{\mu_{n-1}}^1 \bar{\omega} dx +  \int_0^s \bar{\omega} dx - \frac{s}{\mu_{n-1}}
+\end{eqnarray}
+The last two terms equal to
+\begin{eqnarray}
+  \frac{2}{\pi} \sin^{-1}(\sqrt{s})- \frac{s}{\mu_{n-1}} 
+  &\le & \sqrt{\frac{s}{2}} -\frac{\sqrt{s}}{\pi}\\
+  & =  & \sqrt{s}\left(\sqrt{\frac{1}{2}}-\frac{1}{\pi} \right)
+\end{eqnarray}
+$\sqrt{\frac{\mu_{n-1}}{s}}$ attains its maximum when $\mu_{n-1}=\frac{1}{2}$, hence
+\begin{eqnarray}
+\sqrt{\frac{\mu_{n-1}}{s}} &\ge& \frac{1}{\sqrt{1-\sqrt{1-\frac{1}{\pi^2}}}} \\
+                       & > & \frac{\sqrt{\frac{1}{2}}-\frac{1}{\pi} }{\frac{2}{\pi} - \frac{1}{2}}
+\end{eqnarray}
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lemma}
+We have
+  \begin{eqnarray} 
+     |\omega_{\mu_n}^1-\bar{\omega}|_{TV} \le |\omega_{\mu_{n-1}}^0 -\bar{\omega}|_{TV}
+  \end{eqnarray}
+\end{lemma}
+
+\paragraph{Proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

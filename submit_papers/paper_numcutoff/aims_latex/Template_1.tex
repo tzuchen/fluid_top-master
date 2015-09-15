@@ -1,0 +1,329 @@
+% !!!IMPORTANT NOTE: Please read carefully all information including those preceded by % sign
+\documentclass{aims}
+\usepackage{amsmath}
+  \usepackage{paralist}
+  \usepackage{graphics} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+ \usepackage[colorlinks=true]{hyperref}
+   % Warning: when you first run your tex file, some errors might occur, please just
+   % press enter key to end the compilation process,  then it will be fine if you run your tex file again.
+   % Note that it is highly recommended by AIMS to use this package.
+\hypersetup{urlcolor=blue, citecolor=red}
+%\usepackage{hyperref}
+
+  \textheight=8.2 true in
+   \textwidth=5.0 true in
+    \topmargin 30pt
+     \setcounter{page}{1}
+
+% The next 5 line will be entered by an editorial staff.
+\def\currentvolume{X}
+ \def\currentissue{X}
+  \def\currentyear{200X}
+   \def\currentmonth{XX}
+    \def\ppages{X--XX}
+
+ % Please minimize the usage of "newtheorem", "newcommand", and use
+ % equation numbers only situation when they provide essential convenience
+ % Try to avoid defining your own macros
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{problem}{Problem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+
+
+%% Place the running title of the paper with 40 letters or less in []
+ %% and the full title of the paper in { }.
+\title[Running heading with forty characters or less]
+      {The Full Title of Your Paper}
+
+% Place all authors' names in [ ] shown as running head;
+% No more than 40 letters. Leave { } empty
+% Please use `and' to connect the last two names if applicable
+\author[first-name1 last-name1 and first-name2 last-name2]{}
+
+% It is required to enter MSC and Keywords.
+\subjclass{Primary: 58F15, 58F17; Secondary: 53C35.}
+ \keywords{Dimension theory, Poincar\'e recurrences, multifractal analysis.}
+
+% Email address of each of all authors is required.
+% You may list email addresses of all other authors, separately.
+ \email{email1@smsu.edu}
+ \email{email2@aimSciences.org}
+ \email{email3@ece.pdx.edu}
+
+% Put your short thanks below. For long thanks/acknowlegements,
+%please go to the last acknowlegments section.
+\thanks{The first author is supported by NSF grant xx-xxxx}
+
+\begin{document}
+\maketitle
+
+% Enter the first author's name and address:
+\centerline{\scshape First-name1 last-name1 }
+\medskip
+{\footnotesize
+% please put the address of the first author
+ \centerline{First line of the address of the first author}
+   \centerline{Other lines}
+   \centerline{ Springfield, MO 65801-2604, USA}
+} % Do not forget to end the {\footnotesize by the sign }
+
+\medskip
+
+\centerline{\scshape First-name2 last-name2 and First-name3
+last-name3}
+\medskip
+{\footnotesize
+ % please put the address of the second  and third author
+ \centerline{ First line of the address of the second author}
+   \centerline{Other lines}
+   \centerline{Springfield, MO 65810, USA}
+}
+
+\bigskip
+
+% The name of the associate editor will be entered by an editorial staff
+% "Communicated by the associate editor name" is not needed for special issue.
+ \centerline{(Communicated by the associate editor name)}
+
+
+%The abstract of your paper
+\begin{abstract}
+This is the abstract of your paper and it should not exceed
+\textbf{200} words.
+\end{abstract}
+
+%The title of your section 1
+\section{Introduction}
+
+Please use this AIMS template to prepare your tex file after the
+paper is accepted by an AIMS journal. Please read carefully all
+information including those proceeded by \% sign. These are
+important instructions and explanations. Thank you for your
+cooperation.
+
+%The title of your section 2
+\section{Examples}
+
+%The title of your first subsection in section 2
+\subsection{A sample Theorem}
+
+\begin{theorem} \label{result1}
+        Content of your theorem.
+\end{theorem}
+
+\begin{proof}
+To refer to equations in your paper, use the commands:
+\ref{Quotient}, \ref{Multi} and \ref{Equ3}.
+\end{proof}
+
+%The title of your second subsection in section 3
+\subsection{A sample Lemma}
+
+\begin{lemma} \label{L: Lyapunov exponents} State your lemma here.
+\end{lemma}
+
+\begin{proof}
+Your proof statements.
+\end{proof}
+
+Text in both definition and remark should not be slanted.
+%The title of your third subsection in section 2
+\subsection{A sample Remark}
+
+\begin{remark}
+Content of your remarks.
+\end{remark}
+%The title of your fourth subsection in section 2
+\subsection{A sample Definition}
+
+\begin{definition} Sample: Let $\phi_{t}$ be an Anosmia flow on a
+        compact space $V$ and $A \subset V$ a dense set. Say
+        that the upper Lacunae exponents are
+        \emph{$\frac{1}{2}$-pinched} on $A$ if
+\bigskip
+
+  \begin{equation}\label{Quotient}
+        \sup_{x \in A} \frac{\max \{ |\bar{\lambda}|: \bar{\lambda} \
+        \text{is a nonzero upper Lyapunov exponent at} \ x \}}
+        {\min \{ |\bar{\lambda}|: \bar{\lambda} \ \text{is a
+        nonzero upper Lyapunov exponent at} \ x\}}
+         \leq 2.
+  \end{equation}
+\end{definition}
+\bigskip
+%The title of your fifth subsection in section 2
+\subsection{Example of inserting a Figure}
+
+\begin{figure}[htp]
+\begin{center}
+  % Requires \usepackage{graphicx}
+  % replace aims_logo.eps by your figure file name
+  \includegraphics[width=2in]{aims_logo.eps}\\
+  \caption{Here is the Caption of your figure}\label{AIMS}
+  \end{center}
+\end{figure}
+
+
+%The title of your section 3
+\section{How to align the math formulas}
+
+\begin{theorem} \label{result2}
+        Content of your theorem.
+\end{theorem}
+
+In the proof below, we would like to show you how to align the math
+formulas:
+\begin{proof}[Proof of Theorem \ref{result2}]
+    Please refer to the following example and align your math formulas:
+\begin{equation}\label{Multi}
+ \begin{split}
+    \eps{\theta} \wedge d\eps{\theta}^{n-1} =& (\theta_0 + \ep \alpha)
+    \wedge (d(\theta_0 + \ep \alpha))^{n-1} \quad \text{since } d\alpha = 0\\
+    =& (\theta_0 + \ep \alpha) \wedge
+    (d\theta_0)^{n-1} + \theta_0 \wedge d\theta_0^{n-1} - \ep d(\alpha \wedge
+    \theta_0 \wedge d\theta_0^{n-2})\\
+    &  + \theta_0 \wedge d\theta_0^{n-1} + \ep \alpha \wedge
+    d\theta_0^{n-1}  \\
+    =& \theta_0 \wedge d\theta_0^{n-1} - \ep d(\alpha \wedge
+    \theta_0 \wedge d\theta_0^{n-2}),
+ \end{split}
+\end{equation}
+
+It also can be aligned in the following way:
+
+\begin{equation}\label{Multi}
+ \begin{split}
+    &\eps{\theta} \wedge d\eps{\theta}^{n-1} \\
+    =& (\theta_0 + \ep \alpha)
+    \wedge (d(\theta_0 + \ep \alpha))^{n-1} \quad \text{since } d\alpha = 0\\
+    =& (\theta_0 + \ep \alpha) \wedge
+    (d\theta_0)^{n-1} + \theta_0 \wedge d\theta_0^{n-1} - \ep d(\alpha \wedge
+    \theta_0 \wedge d\theta_0^{n-2})\\
+    &  + \theta_0 \wedge d\theta_0^{n-1} + \ep \alpha \wedge
+    d\theta_0^{n-1}  \\
+    =& \theta_0 \wedge d\theta_0^{n-1} - \ep d(\alpha \wedge
+    \theta_0 \wedge d\theta_0^{n-2}),
+ \end{split}
+\end{equation}
+
+\newpage
+
+Here is another example if the math expression in [ ] exceeds one
+line:
+
+\begin{equation}\label{Equ3}
+ \begin{split}
+\int_0^T |u_0(t)|^2dt  \leq& \delta^{-1} [\int_0^T
+(\beta(t)+\gamma(t)) dt\\
+&  \quad\quad+T^{\frac{2(p-1)}{p}}(\int_0^T
+|\dot{u}_0(t)|^pdt)^{\frac{2}{p}}
+ +T^{\frac{2(p-1)}{p}}(\int_0^T |\dot{u}_0(t)|^pdt)^{\frac{2}{p}}].
+ \end{split}
+\end{equation}
+
+ Please use the displaystyle if your formulas fully
+occupy a paragraph, while use textstyle among the text.
+
+For two equations:
+\begin{align*}
+A &= \theta_0 \wedge d\theta_0^{n-1} - \ep d(\alpha \wedge \theta_0 \wedge d\theta_0^{n-2})\\
+B&=\theta_1 \wedge d\theta_1^{n-1} - \ep d(\alpha \wedge \theta_1
+\wedge d\theta_1^{n-2})
+\end{align*}
+Please align your formulas nicely according above examples. Thanks.
+\end{proof}
+
+%For acknowledgements section, please don't number the section, please begin it with \section*{Acknowledgements}
+\section*{Acknowledgments} We would like to thank you for \textbf{following
+the instructions above} very closely in advance. It will definitely
+save us lot of time and expedite the process of your paper's
+publication.
+
+% You may incorporate your references as follows in your main tex file.
+% Using BibTex is not recommended but can be handled.
+
+\begin{thebibliography}{99}
+
+
+\bibitem{A11}
+     \newblock FirstName (or FirstNameInitial.) MiddleInitial. LastName, % first name middle initial. and then last name.  Only the first character in the paper title is capitalized.
+     \newblock \emph{Title of the paper},
+     \newblock Name of the journal, \textbf{Volume} (Year), StaringPage--EndingPage.
+
+% Example of paper with MR number:
+\bibitem{A22} (MR2082924)
+     \newblock C. Wolf,
+     \newblock \emph{A mathematical model for the propagation of a hantavirus in structured populations},
+     \newblock Discrete Continuous Dynam. Systems - B, \textbf{4} (2004), 1065--1089.
+
+% Example of multiple authors:
+\bibitem{BFL} (MR1124979)
+    \newblock Y. Benoist, P. Foulon and F. Labourie, % Use `and' connect the last two authors
+    \newblock \emph{Flots d'Anosov a distributions stable et instable
+     differentiables},
+    \newblock (French) [Anosov flows with stable and unstable differentiable
+     distributions], J. Amer. Math. Soc., \textbf{5} (1992), 33--74.
+
+% Example of a book in the reference:
+\bibitem{rB} (MR1301779)
+     \newblock J. Smoller,
+     \newblock ``Shock Waves and Reaction-Diffusion Equations,"
+     \newblock 2$^{nd}$ edition, Springer-Verlag, New York, 1994.
+% Example of an article in Academic Press or a book:
+\bibitem{Serrin} (MR0402274)
+    \newblock J. Serrin,
+    \newblock  \emph{Gradient estimates for solutions of nonlinear elliptic
+                     and parabolic equations},
+    \newblock  in ``Contributions to Nonlinear Functional Analysis" (eds. E.H. Zarantonello and Author 2),
+                Academic Press, (1971), 33--75.
+% Example of a thesis:
+\bibitem{Zeng}
+    \newblock FirstName LastName,
+    \newblock  ``Torsion Cycles and Set Theoretic Complete Intersection,"
+    \newblock  Ph.D thesis, Washington University in St. Louis, 2006.
+
+% Example of a preprint article with 7 digits arXiv number:
+\bibitem{quas}
+\newblock M. Entov, L. Polterovich and F. Zapolsky,
+\newblock \emph{Quasi-morphisms and the Poisson bracket},
+\newblock  preprint, \arXiv{math/0605406}.
+
+% Example of a preprint article with 8 digits arXiv number:
+\bibitem{Te2008}
+\newblock A. Teplinsky,
+\newblock \emph{Herman's theory revisited},
+\newblock preprint, \arXiv{0707.0078}.
+
+% No author names:
+\bibitem{Whho}
+\newblock
+\newblock ``SARS Expert Committee, SARS in Hong Kong: From Experience to
+Action," Report of Hong Kong SARS Expert Committee,
+\newblock 2003. Available from: \url{http://www.sars-expertcom.gov.hk/english/reports/reports.html}.
+
+% No title:
+\bibitem{tachet}
+\newblock F. Abergel and R. Tachet,
+\newblock
+\newblock work in progress.
+
+\end{thebibliography}
+
+\medskip
+% The data information below will be filled by AIMS editorial staff
+Received xxxx 20xx; revised xxxx 20xx.
+\medskip
+
+\end{document}

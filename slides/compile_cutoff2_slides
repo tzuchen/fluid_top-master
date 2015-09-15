@@ -1,0 +1,3 @@
+latex cutoff2_slides.tex
+dvipdf cutoff2_slides.dvi
+evince cutoff2_slides.pdf

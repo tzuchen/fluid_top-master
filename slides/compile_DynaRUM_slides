@@ -1,0 +1,3 @@
+latex DynaRUM_slides.tex
+dvipdf DynaRUM_slides.dvi
+evince DynaRUM_slides.pdf

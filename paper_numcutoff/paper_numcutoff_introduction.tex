@@ -1,0 +1,117 @@
+%
+% Introduction
+%
+\section{Introduction}
+\label{sec:numcutoffintro}
+
+The question of how chaotic advection mixes a passive scalar function
+has attracted much research effort in recent years
+\cite{Ottino2004}. The main issues in this field are: how to measure
+the thoroughness of the mixing, how the mixing process changes
+qualitatively and quantitatively when the diffusion is close to zero,
+and how to enhance the overall mixing process by designing the map
+which produces chaotic advection. Unfortunately, we have only partial
+understanding for most of these topics. In spite of the fact that the
+detailed mechanism of mixing is unclear, non-trivial mixing processes
+have been observed in experiments \cite{Rothstein1999, Voth2002} and
+can be simulated by large-scale computations \cite{topopt,
+  Tsang2005}. In this article we build a linear Markov Chain model to
+simulate chaotic mixing with small diffusion. Similar approaches for
+nonlinear dynamical systems can be found in, for example,
+\cite{Dellnitz1999, Dellnitz2002, Froyland1998, Froyland1999,
+  Froyland2001} . This simple and parallelizable linear model not only
+captures the multi-stage feature of a chaotic mixing process, but also
+generates a series of finite Markov Chains through which we can
+observe the multi-stage feature of the mixing trajectory near the
+zero-diffusion limit.
+
+\paragraph{The multi-stage feature of chaotic mixing processes.}
+A widely observed phenomenon in the chaotic mixing process when small
+diffusion exists is the two or three-stage transition
+\cite{Thiffeault2003-13, Fereday2002, Antonsen1996, Mezic2005}. The
+map does not mix the scalar function with a constant rate in
+general. When the variance of the scalar function is measured during
+the mixing process, one can in general observe a relatively flat decay
+initially, followed by a super-exponential change, and then finally it
+tends to a exponential decay. We are interested in when these
+transitions happen, why they happen, and how to predict the slope of
+the exponential region. A good review and physical interpretation can
+be found in \cite{Thiffeault2004}.
+
+Thiffeault and Childress \cite{Thiffeault2003-13} study these
+properties for a modified Arnold's cat map. Analytical formulas are
+given to predict the transitions as well as the slopes. Because the
+linear part of this map has an eigenvalue 2.618, which stretches very fast, 
+and the chaotic part is relatively small, the three phases are
+separated clearly. The same analytical procedure cannot be applied to,
+for example, the Standard Map, although the only difference between the
+Standard Map and the modified Arnold's cat map is in the linear part.
+
+\todo{MW: Check rewording of sentence in above paragraph starting
+  ``Because the linear part \ldots''}
+
+As for the exponential decay part, there is still debate about whether
+the decay rate goes to zeros in the zero diffusivity limit or whether
+it tends to a constant independent of the diffusion
+\cite{Thiffeault2004, Tsang2005}. Theoretical analysis shows both of
+these possibilities can occur for different chaotic flows
+\cite{Haynes2005}.
+
+Difficulties typically arise in studying the above problems
+numerically, because the small diffusion usually means fine grids are
+required in the solution of the advection-diffusion equation or the
+simulation of the map. Some studies and numerical results conclude that a
+proportional relation exists between the stationary decay rate and the
+diffusion \cite{Cerbelli2003, Pikovsky2003}. However, this is only true for
+certain diffusion ranges.  
+
+
+
+In \cite{Tsang2005}, the author
+uses a simple and parallelizable numerical strategy which can simulate
+up to $6 \times 10^4$ by $6 \times 10^4$ grids to show the decay rate
+of a certain chaotic map tends to a constant. However, general
+numerical results for most other chaotic maps have not been found so
+far.
+
+\todo{MW: I reworded the sentence starting ``Some simulation results
+  \ldots''. Is this true? Did some people really incorrectly conclude
+  that a proportional relationship exists between the stationary decay
+  rate and the diffusion? And did they incorrectly conclude this only
+  because they didn't use enough resolution? Are \cite{Cerbelli2003,
+    Pikovsky2003} the people who made such an error or are they the
+  people who pointed out the error?}
+  
+\todo{TC: In both \cite{Cerbelli2003, Pikovsky2003}, there are analytical results to compare with their numerical simulations. So I believe their conclusions are correct--the proportional relation between diffusion and stationary decay rate. However, they deal with the cases that the diffusions are relatively large ($D=10^{-2} \sim 10^{-4}$ in \cite{Cerbelli2003}, and $500 \times 500$ grids ($D\approx 10^{-4}$ when adding diffusion) in \cite{Pikovsky2003}). 
+
+In \cite{Cerbelli2003} the author mentions that when $D$ goes to zero, decay rate should be a constant. In \cite{Pikovsky2003}, they simply say the resolution is not enough so they cannot conclude the zero-diffusion decay rate. 
+
+Hence, to be safe I reword the above paragraph again. 
+} 
+
+  
+
+In this paper we focus on the mixing process of the Standard Map in
+the near-zero diffusion limit. We present a numerical strategy to
+simulate the map with very high resolution (up to $8 \times 10^4$ by
+$8 \times 10^4$ grids) and hence very low numerical diffusion. This
+numerical strategy is realized by a Markov Chain simulation. To
+characterize the evolution of the scalar variance in the near-zero
+diffusion limit, we use the concept of cutoff from the study of finite
+Markov Chains. We present numerical evidence to suggest that the
+sequence of models presents a cutoff, which qualitatively
+characterizes the mixing process when the diffusion goes to zero. The
+main contribution of this paper is to build a bridge between finite
+Markov Chain theory and $2$-D chaotic maps with small
+diffusion. Related analytical results for $1$-D chaotic maps
+clarifying their relationship to the cutoff phenomenon can be found in
+\cite{symdyn}.
+
+This paper is organized as the follows: in section
+\ref{sec:numcutoffbackground} we briefly review the background of the
+operators we use and the cutoff phenomenon. Section
+\ref{sec:modelreduction} provides a model reduction view of building
+the Markov Chain model of chaotic maps. Numerical
+evidence of Standard Map cutoff is given in section
+\ref{sec:numresults} and conclusions are presented in section
+\ref{sec:numcutoffconclusion}.

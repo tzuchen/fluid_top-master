@@ -1,0 +1,75 @@
+\documentclass{article}
+
+%\usepackage{graphicx,psfrag}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\title{Cutoff Phenomenon and the Mixing Property of Chaotic Maps}
+\author{Tzu-Chen Liang and Matthew West}
+\date{\today}
+\graphicspath{{figures/}}
+% End of Preamble
+
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example_base}{Example}
+\newenvironment{example}{\begin{example_base}}
+   {\hspace{\stretch{1}}$\lozenge$\end{example_base}}
+
+%\newtheorem{proof_base}{Proof}
+%\newenvironment{proof}{\begin{proof_base}}
+%   {\hspace{\stretch{1}}$\blacksquare$\end{proof_base}}
+
+
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\prob}{Prob}
+
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent
+\marginpar{\textsc{Todo}}
+\framebox{\begin{minipage}[c]{0.90 \textwidth}
+\tt \flushleft #1 \end{minipage}}\vspace{5 mm}\par}
+
+\begin{document}
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+\input{paper_symbolicdynamics_abstract}
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{paper_symbolicdynamics_introduction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%body
+\input{paper_symbolicdynamics_body}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{paper_symbolicdynamics_conclusion}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% References
+\bibliographystyle{abbrv}
+%\bibliographystyle{plain}
+\bibliography{../bib/mixingbib}
+
+
+
+
+\end{document}

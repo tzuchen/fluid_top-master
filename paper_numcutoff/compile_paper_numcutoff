@@ -1,0 +1,7 @@
+latex paper_numcutoff.tex
+bibtex paper_numcutoff
+latex paper_numcutoff.tex
+
+dvipdf paper_numcutoff.dvi
+evince paper_numcutoff.pdf
+

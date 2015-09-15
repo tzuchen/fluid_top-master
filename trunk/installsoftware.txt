@@ -1,0 +1,40 @@
+PETSC
+
+#download PETSC from official website save it to  /home/tzuchen/petsc
+
+#gunzip -c petsc-2.3.3.tar.gz | tar -xof -
+
+#edit .tcshrc, add the following line(with the correct version)
+    setenv PETSC_DIR /home/tzuchen/petsc/petsc-2.3.3-p5/
+
+# setenv PETSC_ARC
+
+#make all
+
+#make test
+
+#manually compile and run examples in  
+/home/tzuchen/petsc/petsc-2.3.3-p5/src/snes/examples/tests 
+ 
+#try the following, to make sure the hostfile works
+ cp /home/tzuchen/proj/fluid_top/trunk/mpd.hosts .
+ mpirun --hostfile mpd.hosts -np 3 ex5
+ 
+
+#  cd $PETSC_DIR/src/sys/viewer/impls/socket/matlab/
+    edit make file, add the 2 lines
+    MATLAB_MEX = /opt/matlab/bin/mex 
+    MATLAB_CC  = gcc32
+
+
+
+
+######################################################
+SLEPC
+
+
+
+######################################################
+FFTW
+
+

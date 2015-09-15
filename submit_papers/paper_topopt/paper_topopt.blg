@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2010/MacPorts 2010_0)
+Capacity: max_strings=500000, hash_size=500000, hash_prime=425003
+The top-level auxiliary file: paper_topopt.aux
+The style file: wileyj.bst
+Database file #1: ../mixingbib.bib
+You've used 41 entries,
+            2526 wiz_defined-function locations,
+            839 strings with 11212 characters,
+and the built_in function-call counts, 41720 in all, are:
+= -- 5102
+> -- 404
+< -- 2
++ -- 515
+- -- 101
+* -- 2355
+:= -- 3504
+add.period$ -- 85
+call.type$ -- 41
+change.case$ -- 43
+chr.to.int$ -- 0
+cite$ -- 41
+duplicate$ -- 4989
+empty$ -- 3195
+format.name$ -- 131
+if$ -- 8948
+int.to.chr$ -- 0
+int.to.str$ -- 41
+missing$ -- 445
+newline$ -- 131
+num.names$ -- 43
+pop$ -- 1563
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 2064
+stack$ -- 0
+substring$ -- 3733
+swap$ -- 3570
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 263
+width$ -- 43
+write$ -- 365

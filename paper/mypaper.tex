@@ -1,0 +1,432 @@
+\documentclass{article}
+%\usepackage{palatino}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+%\usepackage[margin=1.5cm,
+%            vmargin={0pt,1cm},
+%            nohead]{geometry}
+\title{Optimized Mixing in Microfluidic Channels}
+\author{Tzu-Chen Liang}
+\date{\today}
+
+% End of Preamble
+
+\newtheorem{example}{Example}
+\newtheorem{assumption}{Assumption}
+\newtheorem{Proof}{Proof}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+It is very difficult to mix solutions in a pressure-driven microfluidic channel. The flow tends to be laminar and hence the molecular diffusion happens inefficiently. We optimize the shape of the structure inside the channel to accelerate the mixing. Structures that can stir the flow to produce transverse velocity components and enhance the mixing in a passive way are proposed by Abrahm D. Strook et al. In this research, we present a stochastic model to simulate the mixing process happening in a periodical structured channel when the velocity field is fully developed and also periodical. We then show  the complicated mixing phenomenon is similar to a relatively simple Markov process and their mixing rates are related. We further optimize the shape of the structure by a sub-gradient method and accelerate the mixing significantly.
+
+
+
+
+\end{abstract}
+
+
+
+
+
+\section{Notations and Definitions}
+Let $X =[0,1]\times[0,1]$, $x\in X$. We consider a scalar function $c:X \rightarrow \mathbb{R}$ to be the density field. $S:X\rightarrow X$ is a nonsingular (invertible measure-preserving) transformation. Then the Frobenious-Perron operator $P:L_{X}^2\rightarrow L_{X}^2$ is defined as
+$$ P(c(x))=c(S^{-1}(x)) $$   
+We also define a function $d:L_{X}^2 \rightarrow \mathbb{R}^n$. This function samples $n$ equal-sized regions $b_i,i\in \{1,...,n\}$ in $X$ and then
+$$ d(c(x))_i = \frac{\int_{b_i}c(x)dx}{\int_{b_i}dx},i\in \{1,...,n\} $$
+Through out this paper we choose $b_i$ to be regular grids.
+For now, standard deviation is served as a measure of mixing. We would like to use it to measure both the mixing of $c(x)$ and $d(c(x))$. Hence although we define $\sigma: \mathbb{R}^n \rightarrow \mathbb{R}$ as the standard deviation of a vector in $\mathbb{R}^n$, it is overloaded as
+$$ \sigma(c(x)) := \sigma(d(c(x))) $$
+This is of course just an approximation of the standard deviation of $c(x)$. One should notice that the standard deviation of a vector $ u \in \mathbb{R}^n$ is its Euclidean distance to $\bar{u}$, where $\bar{u}_i = \frac{\sum_{i=1}^{n}u_i}{n} ,i\in \{1,...,n\}$. 
+
+
+For a 3-dimensional stationary flow with velocity $\mathbf{v}$ and density $\rho$, let $s \subset \mathbb{R}^2$, define the mass flow rate function $\dot{m}:s \rightarrow \mathbb{R}$ as
+\begin{equation*}
+\dot{m}(s) := \int_{a \in s} \rho \mathbf{v} \cdot d\mathbf{n}(a) 
+\end{equation*}
+where $\mathbf{n}(a)$ denotes the normal vector of $s$ at point $a$.
+
+
+\subsection{Finite Markov Chains}
+Let $\chi$ be a finite space of cardinality $|\chi|=n$. A discrete time Markov chain is a sequence of $\chi$-valued random variables $(W_l)_0^{\infty}$ satisfying
+\begin{eqnarray*}
+ &\mathbf{Prob}(W_l = w_l | W_{l-1} = w_{l-1},W_{l-2} = w_{l-2},...,W_0 = w_0)  \\
+ &=\mathbf{Prob}(W_{l} = w_l | W_{l-1} = w_{l-1})
+\end{eqnarray*}
+for all $w_i \in \chi$ with $0 \le i \le l$ and $l\ge 0$. A Markov chain is time homogeneous if the quantity in the right hand side above is independent of $l$. In this case, such a Markov chain is specified by the initial distribution (the distribution of $W_0$) and the one-step transition kernal or Markov kernal $K\,:\, \chi \times \chi \rightarrow [0,1]$, which is defined by
+\begin{eqnarray*}
+\forall x,y \in \chi, \,\,\, K(x,y)=\mathbf{Prob}(W_{l+1} = y |
+W_{l} = x)
+\end{eqnarray*}
+For any Markov chain $(W_l)_0^{\infty}$ with transition matrix $K$ and initial distribution $w^0$,  $\mathbf{Prob}(W_0=x)=w^0(x)$ for all $x \in \chi$, the distribution of $W_l$ is given by
+\begin{eqnarray}
+\label{Kevolvedistribution} \forall x\in \chi \,\,\, w^l(x) =
+\mathbf{Prob}\{W_l=x\}=(w^0 K^l)(x)=\sum_{y\in \chi} w^0(y)K^l(y,x)
+\end{eqnarray}
+where $K^l$ is a matrix defined iteratively by
+\begin{eqnarray*}
+\forall x,y \in \chi \,\,\, K^l(x,y)=\sum_{z \in
+\chi}K^{l-1}(x,z)K(z,y)
+\end{eqnarray*}
+
+
+A Markov kernal $K$ on $\chi$ is said to be irreducible if for any $x,y$ there exists $j = j(x,y)$ such that $K^j(x,y)>0$. A state $x\in\chi$ is called aperiodic if $K^l(x,x)>0$ for sufficiently large $l$, and $K$ is called aperiodic if all states are aperiodic. Under the assumption of irreducibility of $K$, there exists a unique
+stationary distribution $\pi$ satisfying $\pi K =\pi$
+
+If $K$ is irreducible and aperiodic, then
+\begin{eqnarray*}
+\forall x,y \in \chi \,\,\, \lim_{l \rightarrow \infty}
+K^l(x,y)=\pi(y)
+\end{eqnarray*}
+
+We work on the ($n$-dimensional) Hilbert space $\ell^2(\pi)$. The adjoint operator of $K$ is $K^*$,
+\begin{eqnarray*}
+\label{Kadjoint}
+  K^*(x,y) = \pi(y)K(y,x)/\pi(x)
+\end{eqnarray*}
+$K^*$ is also a Markov operator. The Markov process associated with $K^*$ is the time reversal of the process associated with $K$. If a measure $\mu$ has density $f$ with respect to $\pi$, that is, if $\mu(x)=f(x)\pi(x)$, then $\mu K$ has density $K^*f$ with respect to $\pi$. Thus acting by $K$ on a measure is equivalent to acting by
+$K^*$ on its density with respect to $\pi$.
+
+The above observation says to evolve the density $f$ forward in time, $K^*$ is the operator one needs, i.e.,
+\begin{eqnarray}
+\label{fevolve}
+f^l(x) =  (K^*f^{l-1})(x)= \sum_{y \in \chi}
+K^*(x,y)f^{l-1}(y)
+\end{eqnarray}
+where $f^l$ and $f^{l-1}$ are the densities of $w^l$ and $w^{l-1}$
+with respect to $\pi$. The probabilistic interpretation of a Markov matrix is almost never used in this paper. We apply (\ref{fevolve}) to scalar functions and read $K^*$ as a linear opetator.  
+
+   
+\section{Forming the Optimization Problem}
+The mixing process happens in a thin and long channel. Fluids with two different colors (with intensities $1$ and $0$) are injected in one end of the channel and flow through it driven by bodyforce only. The channel has some internal structure to stir the fluid passively. These structures are periodical with period $l_x$ and the cross section of the channel has dimension $l_y$ by $l_z$. The channel is assumed to be long enough so that the velocity field inside has been fully developed and hence also periodical with period $l_x$. Due to the periodical velocity field, we need only to solve it for one period, and can use this velocity field to carry the fluid with different colors iteratively to observe the mixing process. In fact, we will calculate the streamlines that connect the two ends ($x=0$ and $x=l_x$) of one period length channel and define a Poincare map. Applying this map repeatedly tells us how a particle moving on different cross sections along the channel.   
+
+We simulate the flow using the generalized Stokes partial differential equation for imcompressible flow,
+\begin{eqnarray*}
+( -\mu\triangle + \mathbf{\alpha} \mathbf{I}) \mathbf{u} +\nabla  \mathbf{p} & = & \mathbf{f}\\
+ \mbox{div} \mathbf{u}& = & 0 
+\end{eqnarray*}
+where $\mathbf{u}$ and $\mathbf{p}$ stand for the velocity and pressure fields  and $\mathbf{f}$ is the body force that drives the flow. It has an elliptic operator $-\mu\triangle + \alpha \mathbf{I}$ in which $\mu$ is the viscosity and $\alpha$ represents the inverse permeability. When $\alpha = 0 $ it is just Stokes flow with viscosity $\mu$ and when $\mu=0$ one gets the Darcy equation which governs the flow in porus material with permeability $\alpha^{-1}$. Here we abuse the notation $\mathbf{\alpha} \mathbf{I}$. It simply means $\mathbf{\alpha}$ is also a field and it operates on $\mathbf{u}$ by point-wise product. 
+
+Finite difference method with staggered regular mesh is applied to solve the above equation. Assume the fininte dimensional approximation of the Lalplace, graident and divergence operators on the given mesh are $\mathbf{L}$, $\mathbf{G}$, and $\mathbf{D}$, the generalize Stokes partial equation can be represented by
+  
+\begin{equation}
+\left[\begin{matrix}
+  -\mu \mathbf{L} + \mathbf{H} \mathbf{\bar{\alpha}}  & \mathbf{G}\\
+   \mathbf{D}               &  0 
+\end{matrix} \right]
+\left[\begin{matrix}
+  \mathbf{\bar{u}} \\ \mathbf{\bar{p}}
+\end{matrix} \right]= 
+\left[\begin{matrix}
+  \mathbf{\bar{f}} \\ \mathbf{0}
+\end{matrix} \right]
+\end{equation}
+where $\mathbf{\bar{u}}$, $\mathbf{\bar{p}}$, $\mathbf{\bar{\alpha}}$ and $\mathbf{\bar{f}}$ are the finite dimensional approximations of $\mathbf{u}$, $\mathbf{p}$, $\mathbf{\alpha}$ and, $\mathbf{f}$, respectively. $\mathbf{H}$ is a linear operator that maps the undirectional $\mathbf{\bar{\alpha}}$ to the directional $\mathbf{\bar{u}}$ grids. 
+ 
+We would like to further optimize some objective function $g(\mathbf{\bar{u}},\mathbf{\bar{p}},\mathbf{\bar{\alpha}})$ over parameters $\mathbf{\bar{\alpha}}$. The naive aproach would be to set an optimization porblem as
+\begin{eqnarray*}
+  \mbox{min} & g(\mathbf{\bar{u}},\mathbf{\bar{p}},\mathbf{\bar{\alpha}}) \\
+  \mbox{s.t.}&  
+	\left[\begin{matrix}
+ 	 -\mu \mathbf{L} + \mathbf{H} \mathbf{\bar{\alpha}}  & \mathbf{G}\\
+ 	  \mathbf{D}               &  0 
+	\end{matrix} \right]
+	\left[\begin{matrix}
+	  \mathbf{\bar{u}} \\ \mathbf{\bar{p}}
+	\end{matrix} \right]= 
+	\left[\begin{matrix}
+ 	 \mathbf{\bar{f}} \\ \mathbf{0}
+	\end{matrix} \right] \\
+  & \mathbf{0}\le \mathbf{\bar{\alpha}} \le \alpha_M\mathbf{1}  
+\end{eqnarray*}
+where $\mathbf{\alpha_M}$ is a large number to approximate the minimum permeability when $\alpha$ goes to infinity. The above optimization problem have variables $\mathbf{\bar{u}}$, $\mathbf{\bar{p}}$, and $\mathbf{\bar{\alpha}}$, and a large set of nonlinear equality constraint. This fact makes the problem extremely hard to solve.
+
+Considering that for a given set of $\mathbf{\bar{\alpha}}$, one can always solve (1) to get $\mathbf{\bar{u}}$ and $\mathbf{\bar{p}}$, and there are no inequality constraints on them. We can rewrite the optimization which lumps the equality constrains into the objective function,
+\begin{eqnarray*}
+   \mbox{min}  & g(\mathbf{\bar{u}(\mathbf{\bar{\alpha}})},\mathbf{\bar{p}(\mathbf{\bar{\alpha}})},\mathbf{\bar{\alpha}}) \\
+   \mbox{s.t.} & \mathbf{0}\le \mathbf{\bar{\alpha}} \le \alpha_M\mathbf{1}  
+\end{eqnarray*}
+This formulation reduces the number of variables and eliminates the nonlinear equalities. Nonetheless now it is harder to evaluate the value and the gradient of the objective function, which are required by most optimization algorithms. We will show later that an adjoint method can be applied so that they are achivable.   
+ 
+
+
+
+
+ 
+\section{The Probabilitic Model of the Structured Channel}
+Suppose we are given a Poincare map $S$, which tells us how each flow particle in the left end of the channel is mapped to the right end of it. This map is sufficient to represent what is happening inside one period of the channel. However, it is not well-linked to the setting of our optimization formulation. More specifically, we need scalar value function to minimize by knowing that a smaller value of it gives us a better mixing. This is a hard question because there is no consent about the evaluation of how well a map is in terms of mixing. Our choice is simple: we approximate the map Frobenious-Perron operator of $S$ by a finite dimensional Markov matrix $A$, and set the objective function to be the second largest eigenvalue of $A$.   
+
+There are severl advantage of doing this, we shall briefly mention them here, and they will become clear later. Firstly, to reduce the second largest eigenvalue of a matrix $A$, a decent direction is the matrix $-v_2 v_2^T$ where $v$ is the eigenvector corresponding to the second largest eigenvalue. Secondly, The Markov matrix is diffusive while the map $S$ is not. One needs to be notified that both the partial differential equation we solve for the velocity field and the Poincare map we get from the velocity field are deterministic. The molecular diffusion that actually does the mixing job is not included in these models. The Markov model compensates this small diffusion in an artificial way. This is not saying the molecular diffusion is simulated by the Markov process. However, they do have similar effect in the mixing point of view, and this also links the eigenvalue properties of a Markov chain and the atcual mixing process. This mixing happens because the positions of a fluid particle are discretized into finite states, and the particles at the same state are assumed to be fully mixed before and after each map.
+
+
+\subsection{Finding a Markov Model $A$ of a Given Map $S$}
+
+We assume the flow is a set of particles flying through the left end of the channel and flying out through the right end of it. Both ends of the channel are discretized into $n$ equal-sized meshgrids named $a_i$, $i \in \{1,2,...,n\}$. The state of a flow particle is denoted as $X(k)$ and $X(k+1)$ at the two ends, respectively. We let $X(k) = i$ if the particle flows trhough $a_i$ at the left end, and $X(k+1) = j$ if it flows through $a_j$ at the right end. Inside the channel each of the particle has to follow the streamline which starts at the point the particle first touches the left end of the channel. Applying the flow map one can simulate where each particle goes after one map without any difficulty. Nonetheless, because at time $k$ only the state of a particle is known, not the exact position, one cannot predict exactly which state the particle will exit through time $k+1$. We assume the process is Markov, i.e., the $X(k+1)$ is only dependent on $X(k)$.  Define two matrices $A$ and $B \in \mathbb{R}^{n \times n}$ as
+
+\begin{eqnarray}
+  A_{ij} = \mathbf{Prob}\left(X(k+1)=j | X(k) = i \right)\\
+  B_{ij} = \mathbf{Prob}\left(X(k)=j | X(k+1) = i \right) 
+\end{eqnarray}
+
+Let $x^k$ and $x^{k+1}  \in \mathbb{R}^n$ denote the pmf of $X(k)$ and $X(k+1)$. We have the following relationship, 
+
+\begin{eqnarray}
+\label{xevolve}
+  x^{k+1} = A^T x^k\\
+  x^{k} = B^T x^{k+1} 
+\end{eqnarray}
+
+The above two equations say that knowing $x^{k}$, $A$ is the predictor for $x^{k+1}$, and knowing $x^{k+1}$, $B$ is the one to predict $x^{k}$. 
+
+
+Let $\rho$ be the density of the flow, i.e. the number of particles per unit volume. It needs not to be a constant in forming the Markov matrix, but in all of our applications, we set $\rho$ to be a constant, and the flow is incompressible. Let $\dot{m} = \sum_{i=1}^{n}\dot{m}(a_i) $ to be the total mass flow rate across the corss section of the channel, where $\dot{m}(\cdot)$ is the mass flow rate function defined in section X. When assigning the probability distribution according to the mass flow rate distribution at each cell, due to the periodical boundary condition, this distribution is invariant. Thus we define the stationary distribution $\pi \in \mathbb{R}^{n}$ as
+  \begin{eqnarray*}
+    \pi_{i} = \frac{\dot{m}(a_i)}{\dot{m}} \mbox{   , for } i = 1,...,n
+  \end{eqnarray*}
+i.e., $\pi_{i}$ is the mass flow rate through cell $a_i$ normalized by the total mass flow rate. We shall have
+  \begin{eqnarray}
+  \label{stationary distribution relation}
+    \pi = A^T \pi \nonumber \\
+    \pi = B^T \pi 
+  \end{eqnarray}   
+The above relations suggest to assume $A$ and $B$ for a given map $S$ in the following way
+
+  \begin{eqnarray*}
+   A_{ij} &=& \frac{ \dot{m}\left(S^{-1}(a_j) \cap a_i\right)}{\dot{m}(a_i)} \mbox{  for all } i,j  \\
+   B_{ij} &=& \frac{\dot{m}\left(S(a_j) \cap a_i\right)}{\dot{m}(a_i)} \mbox{  for all } i,j
+  \end{eqnarray*} 
+This indicates the probability going from state $i$ to $j$ is equal to the mass flow rate through $\left(S^{-1}(a_j) \cap a_i\right)$ normalized by the total mass flow rate through $a_i$. 
+
+
+% Check
+%
+%  \begin{eqnarray*}
+%    \sum_i A_{ij} \pi_{i}  & = & \sum_i \frac{ \dot{m}\left(S^{-1}(a_j) \cap a_i\right)}{\dot{m}(a_i)} 
+%                                 \frac{\dot{m}(a_i)}  {\dot{m}}\\
+%                           & = & \sum_i \frac{ \dot{m}\left(S^{-1}(a_j) \cap a_i\right)}{\dot{m}}\\
+%                           & = & \frac{ \dot{m}\left(S^{-1}(a_j)\right)}{\dot{m}}\\
+%                           & = & \frac{ \dot{m}\left(a_j\right)}{\dot{m}}\\
+%                           & = & \pi_j\\
+%  \end{eqnarray*}
+
+This choice clearly satisfies the both equations of (\ref{stationary distribution relation}). Furthermore, we observe that $ \dot{m}\left(S^{-1}(a_j)\cap a_i\right) = \dot{m}\left(a_j \cap S(a_i)\right)$. Let $M \in \mathbb{R}^{n \times n}$ be
+
+  \begin{equation*}
+     M_{ij} = \frac{\dot{m}\left(S^{-1}(a_j)\cap a_i\right)}{\dot{m}}
+  \end{equation*}
+
+Then 
+
+  \begin{eqnarray*}
+     A_{ij} & =& \frac{M_{ij}}{\pi_i}  \mbox{ , for all } i,j\\
+     B_{ij} & =& \frac{M_{ji}}{\pi_i}  \mbox{ , for all } i,j\\
+  \end{eqnarray*}
+
+$M$ also have the following interpretation,
+
+  \begin{equation*}
+     M_{ij} = \mathbf{Prob}\left(  X(k) = i \mbox{ and } X(k+1) = j   \right)
+  \end{equation*}
+
+Although how the distribution of particles is transported forward and backward has been modeled, this is not the end of the story. Our goal is to use this Markov chain to simulate how the "color" evolves. Suppose the total number of particles flowing through the channel per unit time is $p$, and there are $\beta p, \beta \in [0,1]$ of them are colored red. Suppose at iteration $k$, $x^k$ denotes the distribution of the red particles at each states, $x^k$ evolves by $A$ obviousely. There are totally $p \pi_i$ number of particles flowing through the grid $a_i$, and $\beta p x^k_i$ of them are red. Hence the intensity or "color" we see on grid $a_i$ is $\omega^k_i=\frac{\beta p x^k_i}{p \pi_i} = \frac{\beta x^k_i}{\pi_i}$. Let the color vector be $\omega^k = \beta \text{diag}(\pi^{-1})x^k $, and substitute it to the first equation of (\ref{xevolve}), we have   
+
+\begin{eqnarray}
+\omega^{k+1} &=& \text{diag}(\pi^{-1}) A^T \text{diag}(\pi) \omega^{k}\\
+             &=& B \omega^{k}
+\end{eqnarray}
+
+The color vector is evolved by the backward Markov matrix $B$. One should not feel surprised about this fact because $B$ is actually the adjoint operator of $A$, $B= A^*$. There are rich studies about the properties of $A^*$. In the mixing channel case, the adjoint operator happens to fit our requirements. It is easy to see that if $\pi$ is uniform, then $A^T=B$ and there is no difference to use $A^T$ or $B$ to evolve the color vector. Hence it is the nonuniformity of $\pi$ to make the thing different. In the mixing channel problem, the physical interpretation of $\pi$ is the stationary mass flow rate of the flow. Even in the simplest case, due to the non-slipping boundary condition, the flow has parabolic velocity profile normal to the cross section, which says $\pi$ is highly nonuniform. Moreover, $B$ has a right eigenvector $\mathbf{1}$, which is corresponding to the stationary density of $\omega$, and says finally the color distributes evenly . Our formulation suitability captures this property and simulate the color evolution correctly.
+
+
+\subsection{A Few Words About the Objective Function}
+The second largest eigenvalue of a Markov chain matrix indecates how fast the chain will converge to its stationary distribution, or, in our case, the color vector will converge to the uniform distribution. Of course the actually convergence rate depends on the initial distribution and is not a constant. Hence the second largest eigenvalue may not be a good measure for a specific initial color arrangement, but it is clearly a worst case convergence rate for all possible configuration of color vectors. We shall see later in the simulation that for microfluidic scale problem, the SLEM does play and important role in the improvement of mixing.    
+
+\subsection{Finding $A$ Numerically}
+ 
+This I need to think!
+
+
+\section{Finding a Decent Direction}
+Our goal is to optimize the shape of the structure in the channel, i.e. to find a set of $\alpha$ such that the selected eigenvalue of the flow map $A$ is minimized. A decent direction is needed for almost every optimization algorithm. Since the eigenvalue is not directly related to $\alpha$, a series of chain rule are applied to find the gradient. Let the second largest eigenvalue of $A$ be $\mu$
+\begin{equation*}
+ \frac{d\mu}{d\alpha} = \frac{d \mu}{d A}\frac{d A}{d v} \frac{dv}{v\alpha}
+\end{equation*}
+In this section, we would like to discuss each of these three derivatives in detail. Before proceeding, we frist introduce several important numbers which decide the size of the problem we need to solve. 
+
+Let the number of grids in each dimension be $O(n_v)$, then the total number of veriables ($v_x, v_y, v_z$ and $p$) has order $n_v^3$. The $y-z$ plane of the two ends of the channel are subdivided into $n_A$ by $n_A$ grids. Hence the $A \in \mathbb{R}^{n_A^2 \times n_A^2}$    
+
+\subsection{$\frac{d\mu}{dA}$}
+By factorizing the matrix $A$ as
+\begin{equation*}
+ A = \sum_{i=1}^{n_A^2} \lambda_i v_iv_i^T
+\end{equation*}
+One can easily see that $-v_2v_2^T$ is a decent direction of $\mu = \lambda_2(A)$. In the case that $v_2$ and/or $lambda_2$ are not real, $v_2^*$ and $\lambda_2^*$ are also an eigenvector and an eigenvalue. It is easy to show that $\frac{v_2+v_2^*}{2}(\frac{v_2+v_2^*}{2})^T$ is an decent direction of $\mu$. 
+
+
+\subsection{Adjoint Method for $\frac{d A}{d v} \frac{dv}{v\alpha}$ }
+The $(i,j)$ entry of $A$ is $A_{ij}(v,\alpha):\mathbb{R}^{n_v} \times \mathbb{R}^{n_\alpha} \rightarrow \mathbb{R}$. The variables $v$ and $\alpha$ satisfy a set of constraint equations $R(v,\alpha)=0$, which is stated in (3). $\frac{dv}{v\alpha}$ has size $n_v^3 \times n_\alpha$ (very large) and is dense. We would like to calculate $\frac{dA_{ij}}{d\alpha}$ without explicitly forming $\frac{dv}{d\alpha}$. This is the way to go.
+
+ 
+\begin{eqnarray*} 
+  \frac{dA_{ij}}{d\alpha} & = & \frac{\partial{A_{ij}}}{\partial{\alpha}}+
+                                \frac{\partial{A_{ij}}}{\partial{v}} \frac{dv}{d\alpha}\\
+  \frac{dR}{d\alpha} & = & \frac{\partial{R}}{\partial{\alpha}}+\frac{\partial{R}}{\partial{v}} \frac{dv}{d\alpha}=0
+\end{eqnarray*} 
+From the second equation, we have
+\begin{equation*}
+  \frac{dv}{d\alpha}= -\left(\frac{\partial{R}}{\partial{v}}\right)^{\dagger}\frac{\partial{R}}{\partial{\alpha}}
+\end{equation*}
+Substitute this into the first equation,
+\begin{equation*}
+   \frac{dA_{ij}}{d\alpha}  =  \frac{\partial{A_{ij}}}{\partial{\alpha}}-\frac{\partial{A_{ij}}}{\partial{v}} \left(\frac{\partial{R}}{\partial{v}}\right)^{\dagger}\frac{\partial{R}}{\partial{\alpha}} 
+\end{equation*}
+Let $\Phi = -\frac{\partial{f}}{\partial{v}} \left(\frac{\partial{R}}{\partial{v}}\right)^{\dagger}$, then $\Phi$ satisfies
+\begin{equation}
+\label{adjoint equation}
+ \Phi \left(\frac{\partial{R}}{\partial{v}}\right)^{T} = -\left({\frac{\partial{A_{ij}}}{\partial{v}}}\right)^T
+\end{equation}
+The above equation is called adjoint equation. Solve $\Phi$, we then get
+\begin{equation}
+\label{dAijdalpha}
+  \frac{dA_{ij}}{d\alpha}  =  \frac{\partial{A_{ij}}}{\partial{\alpha}}+\Phi \frac{\partial{R}}{\partial{\alpha}} 
+\end{equation}
+Notice that $\frac{\partial{R}}{\partial{v}}$ need not to be invertible. In our problem $A_ij$ does not depend on $\alpha$ explicitly, so the first term in the right hand side of (\ref{dAijdalpha}) is zero. To solve the adjoint equation (\ref{adjoint equation}), we need $\frac{\partial{A_{ij}}}{\partial{v}}$, which will be discussed in the next section. 
+
+\subsection{Calculate the map $A$ and $\frac{dA}{dv}$} 
+
+In this section we discuss the detail of finding the map $A$ and $\frac{dA}{dv}$ by the discrete velocity field $\mathbf{v} = [\mathbf{v_{x}}; \mathbf{v_{y}}; \mathbf{v_{z}}]$. Given an initial point $(x_{0},y_{0},z_{0})$ at the left end of the channel, i.e., $x_{0}=0$, numerical integration with fixed step size gives us the affine relation,
+
+\begin{eqnarray*}
+ x_{f} & = & \mathbf{k}_{x}^T \mathbf{v_{x}}+x_{0}\\
+ y_{f} & = & \mathbf{k}_{y}^T \mathbf{v_{y}}+y_{0}\\
+ z_{f} & = & \mathbf{k}_{z}^T \mathbf{v_{z}}+z_{0}\\
+\end{eqnarray*}
+
+where $\mathbf{k}_{x},\mathbf{k}_{y}$ and $\mathbf{k}_{z}$ are the constant weighting vectors generated by the numerical integration. $(x_{f},y_{f},z_{f})$ is the point where $(x_{0},y_{0},z_{0})$ is mapped to, assumming $x_{f}$ equals the length of the channel. $\frac{dy_{f}}{dv}$ and $\frac{dz_{f}}{dv}$ can be written as
+ 
+\begin{eqnarray*}
+ \frac{dy_{f}}{d\mathbf{v}} & = & \frac{dy_{f}}{d\mathbf{v}_{y}}+
+                                  \frac{\partial{y_{f}}}{\partial{x_{f}}} \frac{dx_{f}}{d\mathbf{v}_{x}}\\
+                            & = & \frac{dy_{f}}{d\mathbf{v}_{y}}+\frac{v_{yf}}{v_{xf}} \frac{dx_{f}}{d\mathbf{v}_{x}} \\
+ \frac{dz_{f}}{d\mathbf{v}} & = & \frac{dy_{f}}{d\mathbf{v}_{z}}+
+                                  \frac{\partial{y_{f}}}{\partial{x_{f}}} \frac{dx_{f}}{d\mathbf{v}_{x}} \\
+                            & = & \frac{dy_{f}}{d\mathbf{v}_{z}}+\frac{v_{zf}}{v_{xf}} \frac{dx_{f}}{d\mathbf{v}_{x}} \\
+\end{eqnarray*}
+
+$v_{xf}$, $v_{yf}$ and $v_{zf}$ are the $x$,$y$ and $z$ velocitices at $(x_{f},y_{f},z_{f})$. Hence, we have
+\begin{eqnarray*}
+ \frac{dy_{f}}{d\mathbf{v}} & = & \left[\frac{v_{yf}}{v_{xf}}\mathbf{k}_{x}^T, 
+                                        \mathbf{k}_{y}^T ,\mbox{\boldmath$0$}    \right]\\
+ \frac{dz_{f}}{d\mathbf{v}} & = & \left[\frac{v_{zf}}{v_{xf}}\mathbf{k}_{x}^T, 
+                                        \mbox{\boldmath$0$}, \mathbf{k}_{z}^T   \right]\\
+\end{eqnarray*}
+ 
+Note that the lengths of $\mathbf{k}_{x},\mathbf{k}_{y}$ and $\mathbf{k}_{z}$ are equal to the lengths of $\mathbf{v}_x,\mathbf{v}_y$ and $\mathbf{v}_z$. However, for a specific streamline connecting $(x_0,y_0,z_0)$ and $(x_f,y_f,z_f)$, it only depends on its neighboring velocity data, assuming linear interpolation method is using.  
+
+
+
+Suppose a point $p_i = (y_{0},z_{0})$ is mapped to $(y_{f},z_{f})$, and the unit vectors $(1,0)$ and $(0,1)$ origined at $(y_{0},z_{0})$ are mapped to $(y_{10f},z_{10f})$ and $(y_{01f},z_{01f})$, respectively. Let $P$ be the coordinate transformation matrix, 
+
+\begin{equation}
+P = \left[
+    \begin{matrix}
+      y_{10f}-y_{f} & y_{01f}-y_{f} \\
+      z_{10f}-z_{f} & z_{01f}-z_{f} \\
+    \end{matrix} \right]
+\end{equation}
+
+We want to evaluate the menbership of a point $p_j = (y,z)$ to $(y_{f},z_{f})$. First we transform it back to the unstretched space, i.e., 
+  
+\begin{equation} 
+ \bar{x} = 
+ \left[   
+   \begin{matrix}     
+           \bar{y} \\\bar{z} 
+   \end{matrix}
+  \right]
+    = P^{-1}
+  \left[  
+   \begin{matrix}
+           y-y_{f}\\z-z_{f}\\
+   \end{matrix}
+  \right] 
+\end{equation}
+
+and then form $\bar{A}$ as $\bar{A_{ij}} = exp(d_{ij}^{2}/{d^{2}_{0}})/\pi$, where $d_{ij} = \|[\bar{y} \, \bar{z}]\|\ $. $d_0$ is the parameter to adjust the width of the Gaussian distribution. In order to make $\bar{A}$ really sparse, we set $\bar{A}_{ij}=0$ if $d_{ij}>2d_{0}$. Notice that $\bar{A}$ is not a Markov matrix because its row sums are not ones, so further let $A_{ij} = \frac{\bar{A}_{ij}}{\rho_{i}}$, where $\rho_{i}=\sum_{j}\bar{A}_{ij}$ to normalize the rows.   
+  
+Now we can derive an expression for $\frac{dA}{dv}$ by chain rule. For simplicity, let $w_{ij} = d_{ij}^{2} = [\bar{y} \, \bar{z}][\bar{y} \, \bar{z}]^{T}$, 
+ 
+\begin{eqnarray}
+   \frac{dA_{ij}}{dv_{k}} & = & \frac{A_{ij}}{\pi}\frac{1}{d_{0}^2}\frac{dw_{ij}}{dv_{k}}   \\
+                          & = & \frac{A_{ij}}{\pi}\frac{2}{d_{0}^2}[\bar{y} \, \bar{z}]    
+                                \left[ \begin{matrix}
+                                      \frac{d\bar{y}}{dv_{k}}\\ \frac{d\bar{z}}{dv_{k}}\\
+                                \end{matrix}  \right] \\ 
+                          & = & \frac{A_{ij}}{\pi}\frac{2}{d_{0}^2}[\bar{y} \, \bar{z}] 
+                                \left(
+                                \frac{dP^{-1}}{dv_{k}}
+                                   \left[\begin{matrix}
+                                     y-y_{f}\\z-z_{f}
+                                   \end{matrix}\right] - P^{-1}
+                                   \left[\begin{matrix}
+                                     \frac{dy_{f}}{dv_{k}}\\\frac{dz_{f}}{dv_{k}}
+                                   \end{matrix}\right]
+                            \right)
+\end{eqnarray}
+we have 
+\begin{eqnarray}
+  \frac{dP^{-1}}{dv} & = & -P^{-1}\frac{dP}{dv}P^{-1}\\
+                     & = & -P^{-1}\left(
+                            \frac{\partial{P}}{\partial{y_{f}}} \frac{dy_{f}}{dv_{k}}+ 
+  			    \frac{\partial{P}}{\partial{z_{f}}} \frac{dz_{f}}{dv_{k}}+
+ 		     	    \frac{\partial{P}}{\partial{y_{10f}}} \frac{dy_{10f}}{dv_{k}}+ 
+ 	                    \frac{\partial{P}}{\partial{z_{10f}}} \frac{dz_{10f}}{dv_{k}}+
+ 			    \frac{\partial{P}}{\partial{y_{01f}}} \frac{dy_{01f}}{dv_{k}}+
+ 			    \frac{\partial{P}}{\partial{z_{01f}}} \frac{dz_{01f}}{dv_{k}}
+                            \right)P^{-1}  \\
+\end{eqnarray}
+where
+\begin{eqnarray*}
+                            \frac{\partial{P}}{\partial{y_{f}}}   & = &    
+                                    \left[\begin{matrix}
+                                      -1 & -1\\ 0 & 0  
+                                    \end{matrix} \right] \\
+  			    \frac{\partial{P}}{\partial{z_{f}}}   & = &
+                                    \left[\begin{matrix}
+                                      0 & 0\\ -1 & -1  
+                                    \end{matrix} \right] \\
+ 			    \frac{\partial{P}}{\partial{y_{10f}}} & = &
+                                    \left[\begin{matrix}
+                                      1 & 0\\ 0 & 0  
+                                    \end{matrix} \right] \\
+ 	                    \frac{\partial{P}}{\partial{z_{10f}}} & = &
+                                    \left[\begin{matrix}
+                                      0 & 0\\ 1 & 0  
+                                    \end{matrix} \right] \\
+ 			    \frac{\partial{P}}{\partial{y_{01f}}} & = &
+                                    \left[\begin{matrix}
+                                      0 & 1\\ 0 & 0  
+                                    \end{matrix} \right] \\
+ 			    \frac{\partial{P}}{\partial{z_{01f}}} & = &
+                                    \left[\begin{matrix}
+                                      0 & 0\\ 0 & 1  
+                                    \end{matrix} \right] \\ 
+\end{eqnarray*}
+
+
+
+
+
+
+
+
+\section{Conclusion}
+This is the conclusion.
+
+
+\end{document}

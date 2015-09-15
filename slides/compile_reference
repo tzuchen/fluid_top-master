@@ -1,0 +1,3 @@
+latex reference_slides.tex
+dvipdf reference_slides.dvi
+evince reference_slides.pdf

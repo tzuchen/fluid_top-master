@@ -1,0 +1,7 @@
+latex mypaper.tex
+bibtex mypaper
+latex mypaper.tex
+
+dvipdf mypaper.dvi
+evince mypaper.pdf
+

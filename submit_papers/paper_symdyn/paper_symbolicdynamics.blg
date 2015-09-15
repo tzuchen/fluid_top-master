@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2010/MacPorts 2010_0)
+Capacity: max_strings=500000, hash_size=500000, hash_prime=425003
+The top-level auxiliary file: paper_symbolicdynamics.aux
+The style file: abbrv.bst
+Database file #1: ../mixingbib.bib
+You've used 25 entries,
+            2118 wiz_defined-function locations,
+            669 strings with 7398 characters,
+and the built_in function-call counts, 8298 in all, are:
+= -- 845
+> -- 355
+< -- 5
++ -- 142
+- -- 114
+* -- 590
+:= -- 1385
+add.period$ -- 77
+call.type$ -- 25
+change.case$ -- 129
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 308
+empty$ -- 654
+format.name$ -- 114
+if$ -- 1722
+int.to.chr$ -- 0
+int.to.str$ -- 25
+missing$ -- 24
+newline$ -- 128
+num.names$ -- 50
+pop$ -- 108
+preamble$ -- 1
+purify$ -- 107
+quote$ -- 0
+skip$ -- 220
+stack$ -- 0
+substring$ -- 593
+swap$ -- 57
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 96
+warning$ -- 0
+while$ -- 87
+width$ -- 27
+write$ -- 280

@@ -1,0 +1,7 @@
+latex mapmixing.tex
+bibtex mapmixing
+latex mapmixing.tex
+
+dvipdf mapmixing.dvi
+evince mapmixing.pdf
+

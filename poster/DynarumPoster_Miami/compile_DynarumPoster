@@ -1,0 +1,6 @@
+latex DynarumPoster.tex
+bibtex DynarumPoster
+latex DynarumPoster.tex
+
+dvipdf  DynarumPoster.dvi
+evince  DynarumPoster.pdf

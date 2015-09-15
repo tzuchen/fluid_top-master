@@ -1,0 +1,220 @@
+%
+% Thesis Introduction
+%
+%
+
+\todo{TC: the paragraphs are from introductions of each papers}
+
+This thesis deal with three topics in chaotic map mixing: the design and optimization of microfluidic mixing channels, the mixing trajectories of a scalar function advected by a chaotic map with near-zero diffusion, and the relation between chaotic map mixing and cutoff phenomenon. In this chapter we briefly review the current developments in each of these fields and introduce our approaches.  
+
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Microfluidic mixing channels}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Microfluidic systems control and manipulate liquids in microliter or nanoliter amounts. The study of microfluidics emerged in the 1990s and
+is now widely applied in various fields such as the development of DNA chips \cite{Burns1998}, molecular biology \cite{DavidJ2002},
+chemical reactions \cite{Andersson2000}, transfers of small volumes of materials \cite{Sammarco1999}, and lab-on-a-chip technology
+\cite{weigl2003,Stone2004}. One of the challenges in microfluidics is the design of mixing channels, whose objective is to thoroughly mix
+two or more different liquids. Although the mixers designed by using active components like micro-pumps to stir the flow have very
+promising results \cite{Yang2000,Deshmukh2000}, passive mixing devices have advantages in manufacturing simplicity and price.
+
+In chapter 2, we focus on the design and optimization of passive microfluidic mixing channels. A microfluidic mixing channel typically has
+cross-section dimension $\ell\sim 100\nu m$, and the Reynolds number $\text{Re}=U\ell/\nu$ is less than $100$ \cite{Stroock2002} ($U$ is the average
+velocity of the liquid and $\nu$ is the kinematic viscosity of the fluid).  Fluid flow on this scale is highly laminar and the mixing of
+materials between streams is purely diffusive. The dimensionless number that controls the length of the channel required for mixing is the
+P\'{e}clet number ($\text{Pe}= U\ell/D$, where $D$ is the molecular diffusivity). For a pressure-driven mixing channel the mixing length can be
+expected to grow linearly with $\text{Pe}$ and is usually much more than $1\,\text{cm}$. Hence various designs are proposed to stir the
+flow inside the channel and produce transverse velocities to enhance the mixing \cite{Stroock2002, Ottino2004Science, Wiggins2004}.
+
+The mixing problem has been linked to chaotic mixing protocols, which
+are believed to have the best mixing results because of the stretching and
+folding features of chaotic maps. A typical way to realize chaotic
+mixing is through the design of linked twist maps, and has been
+studied in \cite{Wiggins2004}. However, there is no direct way to
+realize the designed linked twist map in a mixing channel, either by
+passive structure or by active mechanisms such as variable-frequency
+pumps or internal moving components. We use the
+techniques developed in topology optimization to find the internal
+structure of a mixing channel to realize a desired flow field or flow
+map. The results can be applied to mixing channel design when the
+desired mixing protocol is known.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Topology optimization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A typical topology optimization problem is to distribute a given amount of material in a design domain subject to load and support
+conditions such that the stiffness of the structure is maximized \cite{Bendsoe2003}. The design parameters are usually the spatial
+distribution of the material. Even though the optimal solution is in general quite sparse in space, the number of variables is often
+inevitably large in the formulation. Some problems, such as truss topology design, can be formulated as a convex optimization
+problems \cite{BenTal1997} by relaxing the material density to be progressive and solved by efficient algorithms. The optimal solution of
+the relaxed optimization is shown to be a black/white solution and thus also the optimal solution of the original problem. In other cases
+when the problem has no convex formulation, nonlinear optimization techniques need to be applied and it is in general hard.
+
+
+Topology optimization has been applied to the design of optimal shapes
+of pipes or diffusers such that the total potential power drop is
+minimized \cite{Evgrafov2005, Borrvall2003}. Darcey flow is used to
+simulate the flow inside porous material and form a relaxation. The
+design parameters in this formulation are the permeability of the
+material on a spatial grid. In this case, the relaxed problem is still
+non-convex, but can be solved by means of sequential separable and
+convex programming. A two-step solution procedure is thus applied to
+find a black/white solution with permeability either $0$ or infinity
+at a point.
+
+In this thesis we use the same relaxation strategy to formulate the
+mixing channel design as a topology optimization problem. The
+objective function we use is a function of the velocity field or a map
+between the inlet and the outlet of one period of the channel. It is a
+nonlinear optimization problem, and a sub-gradient method is developed
+to find a local minimum of the objective function. We do not
+consider the fabrication issue explicitly when solving the topology
+optimization problem.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The simulation of Advection-Diffusion equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Another challenge in the design of microfluidic mixing channels is
+that there is no clear measure of how well a channel mixes. In
+experiments it is common to measure the variance of colored liquids on
+the cross-section of the channel to see how well they are mixed
+\cite{Stroock2002}. However, when doing simulation, this corresponds
+to solving the Advection-Diffusion equation for a 3-D flow field, which
+is expensive. The problem that there is no clear link between the
+variance of the liquid on a cross-section and the channel structures
+remains hard so far. In this thesis, we develop a Markov Chain model to
+approximate the mixing process.  Similar approaches can be found in,
+for example, \cite{Dellnitz1999, Dellnitz2002, Froyland1998,
+Froyland1999, Froyland2001}. It is a cheap way to replace the solving
+of Advection-Diffusion equation and can let one observe the mixing
+process and measure the variance of the colored field easily. This
+model is by no means an accurate solution of the Advection-Diffusion
+equation, but it captures the most important factors of the chaotic
+mixing: stretching, folding, and molecular diffusion.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The multi-stage feature of chaotic mixing processes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 
+The question of how chaotic advection mixes a passive scalar function
+has attracted much research effort in recent years
+\cite{Ottino2004}. The main issues in this field are: how to measure
+the thoroughness of the mixing, how the mixing process changes
+qualitatively and quantitatively when the diffusion is close to zero,
+and how to enhance the overall mixing process by designing the map
+that produces chaotic advection. Unfortunately, we have only partial
+understanding for most of these topics. In spite of the fact that the
+detailed mechanism of mixing is unclear, non-trivial mixing processes
+have been observed in experiments \cite{Rothstein1999, Voth2002} and
+can be simulated by large-scale computations \cite{topopt,
+  Tsang2005}. 
+In chapter 3, we use the Markov Chain model we built for the simulation of microfludic mixing channels to simulate the chaotic mixing with small diffusion. Similar approaches for nonlinear dynamical systems can be found in, for example,
+\cite{Dellnitz1999, Dellnitz2002, Froyland1998, Froyland1999,
+  Froyland2001}. This simple and parallelizable linear model not only
+captures the multi-stage feature of a chaotic mixing process, but also
+generates a series of finite Markov Chains through which we can
+observe the multi-stage feature of the mixing trajectory near the
+zero-diffusion limit.
+
+
+
+A widely observed phenomenon in the chaotic mixing process when small
+diffusion exists is the two- or three-stage transition
+\cite{Thiffeault2003-13, Fereday2002, Antonsen1996, Mezic2005}. The
+map does not mix the scalar function with a constant rate in
+general. When the variance of the scalar function is measured during
+the mixing process, one can in general observe a relatively flat decay
+initially, followed by a super-exponential change, and then finally it
+tends to a exponential decay. We are interested in when these
+transitions happen, why they happen, and how to predict the slope of
+the exponential region. A good review and physical interpretation can
+be found in \cite{Thiffeault2004}.
+
+Thiffeault and Childress \cite{Thiffeault2003-13} study these
+properties for a modified Arnold's cat map. Analytical formulas are
+given to predict the transitions as well as the slopes. Because the
+linear part of this map has an eigenvalue 2.618, which stretches very fast, 
+and the chaotic part is relatively small, the three phases are
+separated clearly. The same analytical procedure cannot be applied to,
+for example, the Standard Map, although the only difference between the
+Standard Map and the modified Arnold's cat map is in the linear part.
+
+\todo{MW: Check rewording of sentence in above paragraph starting
+  ``Because the linear part \ldots''}
+
+As for the exponential decay part, there is still debate about whether
+the decay rate goes to zero in the zero diffusivity limit or whether
+it tends to a constant independent of the diffusion
+\cite{Thiffeault2004, Tsang2005}. Theoretical analysis shows that both of
+these possibilities can occur for different chaotic flows
+\cite{Haynes2005}.
+
+Difficulties typically arise in studying the above problems
+numerically, because the small diffusion usually means that fine grids are
+required in the solution of the Advection-Diffusion equation or the
+simulation of the map. Some studies and numerical results conclude that a
+proportional relation exists between the stationary decay rate and the
+diffusion \cite{Cerbelli2003, Pikovsky2003}. However, this is only true for
+certain diffusion ranges.  
+
+
+In \cite{Tsang2005}, the author
+uses a simple and parallelizable numerical strategy that can simulate
+up to $6 \times 10^4$ by $6 \times 10^4$ grids to show that the decay rate
+of a certain chaotic map tends to a constant. However, general
+numerical results for most other chaotic maps have not been found so
+far.
+  
+
+In chapter 3 we focus on the mixing process of the Standard Map in
+the near-zero diffusion limit. We present a numerical strategy to
+simulate the map with very high resolution (up to $8 \times 10^4$ by
+$8 \times 10^4$ grids) and hence very low numerical diffusion. This
+numerical strategy is realized by a Markov Chain simulation. To
+characterize the evolution of the scalar variance in the near-zero
+diffusion limit, we use the concept of cutoff from the study of finite
+Markov Chains. We present numerical evidence to suggest that the
+sequence of models presents a cutoff, which qualitatively
+characterizes the mixing process when the diffusion goes to zero. The
+main contribution of this paper is to build a bridge between finite
+Markov Chain theory and $2$-D chaotic maps with small
+diffusion. Related analytical results for $1$-D chaotic maps
+clarifying their relationship to the cutoff phenomenon can be found in
+\cite{symdyn}.
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cutoff phenomenon and symbolic dynamics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+How many riffle shuffles are required to sufficiently mix 52 cards? This question have been
+answered by Bayer and Diaconis in \cite{Diaconis1992}. It is quite surprising that the cards are
+highly ordered in the first several shuffles (6 for 52 cards) and then randomized almost abruptly.
+This kind of sharp change in some measure of order/disorder has been discovered in many finite
+Markov Chains, and named cutoff phenomenon \cite{Diaconis1986}. A recent review about the cutoff
+phenomenon of random walks on finite groups can be found in \cite{LSaloff-Costt2004}. On the other
+hand, chaotic mixing process is observed to have similar
+properties \cite{Thiffeault2003-13, Thiffeault2004, Tsang2005}. Think of the cream poured
+into coffee, while stirring, the cream keeps stretching for a while and the mixing with coffee
+happens suddenly. Chaotic mixing has been applied in, for example, microfluidic mixing channel
+design \cite{Ottino2004Science, Wiggins2004, Ottino2004}, random search strategies and
+generating random numbers. However, it is still unclear how to characterize and measure the mixing
+process. In chapter 4, we try to build the relation between cutoff phenomenon and the chaotic
+mixing process by generalizing symbolic dynamics of chaotic maps. The result shows ``cutoff'' in
+the mixing process can be produced by chaotic maps with full symbolic dynamics and certain initial
+conditions.

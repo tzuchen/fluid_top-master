@@ -1,0 +1,7 @@
+latex paper_symbolicdynamics.tex
+bibtex paper_symbolicdynamics
+latex paper_symbolicdynamics.tex
+
+dvipdf paper_symbolicdynamics.dvi
+evince paper_symbolicdynamics.pdf
+

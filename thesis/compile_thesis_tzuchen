@@ -1,0 +1,20 @@
+
+cp -f ../paper_topopt/paper_topopt_introduction.tex . 
+cp -f ../paper_topopt/paper_topopt_body.tex . 
+cp -f ../paper_topopt/paper_topopt_conclusion.tex . 
+
+cp -f ../paper_numcutoff/paper_numcutoff_introduction.tex .
+cp -f ../paper_numcutoff/paper_numcutoff_body.tex .
+cp -f ../paper_numcutoff/paper_numcutoff_conclusion.tex .
+
+cp -f ../paper_symdyn/paper_symbolicdynamics_introduction.tex .
+cp -f ../paper_symdyn/paper_symbolicdynamics_body.tex .
+cp -f ../paper_symdyn/paper_symbolicdynamics_conclusion.tex .
+
+latex  thesis_tzuchen.tex
+bibtex thesis_tzuchen
+latex  thesis_tzuchen.tex
+
+dvipdf thesis_tzuchen.dvi
+evince thesis_tzuchen.pdf
+

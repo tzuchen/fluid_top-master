@@ -1,0 +1,75 @@
+\def\coauthor{\@dblarg\beamer@coauthor}
+\long\def\beamer@coauthor[#1]#2{%
+  \def\insertcoauthor{#2}%
+  \def\beamer@shortcoauthor{#1}%
+  }
+\coauthor{}
+\setbeamerfont{coauthor}{size=\small}
+
+\setbeamerfont{author}{size=\Large}
+\setbeamerfont{institute}{size=\scriptsize}
+\setbeamerfont{date}{size=\small}
+
+\usetheme{Madrid}
+\usefonttheme[onlymath]{serif}
+\useinnertheme{rectangles}
+\useoutertheme{shadowcenter}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamercolor{author in head/foot}{parent=palette tertiary}
+\setbeamercolor{title in head/foot}{parent=palette secondary}
+\setbeamercolor{date in head/foot}{parent=palette primary}
+\setbeamertemplate{footline}%
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.28\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.44\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.28\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\setbeamercolor{title}{parent=palette secondary}
+\newcommand{\myframetitle}[1]{\frametitle{\rule[-5mm]{0pt}{15mm} #1}}
+
+\setbeamertemplate{title page}
+{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    % FIXME: would like to add wd=10cm to the following options, but it's busted
+    \begin{beamercolorbox}[sep=8pt,center,rounded=true,shadow=\beamer@themerounded@shadow]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\pa
+r}%
+      \fi%     
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \ifx\insertcoauthor\@empty%
+    \else%
+      \begin{beamercolorbox}[sep=8pt,center]{coauthor}%
+        \usebeamerfont{coauthor}\insertcoauthor%
+      \end{beamercolorbox}%
+    \fi
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}\vskip0.5em
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\par}
+  \end{centering}
+  \vfill
+}

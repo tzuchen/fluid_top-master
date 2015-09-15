@@ -1,0 +1,90 @@
+
+ setenv PETSC_DIR /home/tzuchen/petsc/petsc-2.3.0
+ setenv PETSC_ARCH linux-gnu
+ setenv MATLAB_MEX /opt/matlab/bin/mex
+ setenv MATLAB_CC  gcc32
+
+# To compile matlab functions, go to
+   /home/tzuchen/petsc/petsc-2.3.0/src/sys/src/viewer/impls/socket/matlab
+and do
+   make BOBT=g matlabcodes
+sometimes we need to manually move the compiled functions to {PETSC_DIR}/bin/matlab
+
+/////////////////////////////////////////////////////////////////////////////////
+To build a library
+http://www.erlenstar.demon.co.uk/unix/faq_7.html#SEC79
+
+An example:
+/* file shrobj.c */
+const char *myfunc()
+{    return "Hello World";}
+
+/* end shrobj.c */
+/* file hello.c */
+
+#include <stdio.h>
+extern const char *myfunc();
+main()
+{
+    printf("%s\n", myfunc());
+    return 0;
+}
+/* end hello.c */
+
+$ gcc -fpic -c shrobj.c
+$ gcc -shared -o libshared.so shrobj.o
+$ gcc hello.c libshared.so
+$ ./a.out
+Hello World
+// There are some more thing to do with the lib (set path?)
+Build a static lib:
+gcc -static hellow.c sharobj.o
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+     fprintf(stdout,"Here is the matrix size:\n");
+     fprintf(stdout,"m = %d\n",m);
+     fprintf(stdout,"n = %d\n",n);
+
+     fprintf(stdout,"fd = %d\n",fd);   
+     fprintf(stdout,"my rank is %d\n",rank); 
+     fprintf(stdout,"row,col,val = %d %d %f\n",*(Ir+i),col,*(Pr+i));     
+
+      PetscLogDouble t1,t2,elapsed_time;
+      ierr = PetscGetTime(&t1);CHKERRQ(ierr);
+      ierr = PetscGetTime(&t2);CHKERRQ(ierr);
+      elapsed_time = t2 - t1;
+      PetscPrintf(PETSC_COMM_WORLD,"Solve_time = %4.2e \n",elapsed_time);
+
+///////////////////////////////////////////////////////////////////////////////
+
+     to see sockets
+         /usr/sbin/lsof -i
+     to see process
+         ps -ef
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+
+PetscPrintf(PETSC_COMM_SELF,"localIstart = %d\n",localIstart); 
+PetscPrintf(PETSC_COMM_SELF,"localIend = %d\n",localIend); 
+PetscPrintf(PETSC_COMM_SELF,"Jc[localIend] = %d\n",Jc[localIend]); 
+PetscPrintf(PETSC_COMM_SELF,"Jc[localIstart] = %d\n",Jc[localIstart]); 
+
+  //////////////////////////////////////////////////////////////////////////////////
+ 
+VecGetSize(y,&m);
+VecGetSize(gradf,&n);
+PetscPrintf(PETSC_COMM_WORLD,"size y = %d\n",m);PetscPrintf(PETSC_COMM_WORLD,"size gradf = %d \n",n);
+
+MatGetSize(Prt,&m,&n);
+PetscPrintf(PETSC_COMM_WORLD,"size Prt = %d %d ",m,n);
+
+ 
+
+
+
+
+

@@ -1,0 +1,23 @@
+body, table, td, th
+{
+	Background-Color : #FFFFFF;
+	Font-Family : sans-serif;
+	Text-Align : left;
+	Font-Size : 10pt;
+}
+
+input,select
+{
+    font-family: sans-serif;
+    font-size: 10pt;
+}
+
+textarea
+{
+    font-size: 100%;
+}
+
+#A:hover { text-decoration: underline };
+A:link, A:visited, A:active { text-decoration: underline };
+
+P.Breakhere {page-break-before: always}

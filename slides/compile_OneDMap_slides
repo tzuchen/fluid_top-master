@@ -1,0 +1,3 @@
+latex OneDMap_slides.tex
+dvipdf OneDMap_slides.dvi
+evince OneDMap_slides.pdf

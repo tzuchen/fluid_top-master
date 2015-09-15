@@ -1,0 +1,385 @@
+\documentclass{aims}
+\usepackage{amsmath}
+  \usepackage{paralist}
+  \usepackage{graphicx} %% add this and next lines if pictures should be in esp format
+  \usepackage{epsfig} %For pictures: screened artwork should be set up with an 85 or 100 line screen
+%\usepackage[pdftex]{graphicx}
+%  \usepackage{epstopdf}
+ \usepackage[colorlinks=true]{hyperref}
+\hypersetup{urlcolor=blue, citecolor=red}
+
+  \textheight=8.2 true in
+   \textwidth=5.0 true in
+    \topmargin 30pt
+     \setcounter{page}{1}
+
+% The next 5 line will be entered by an editorial staff.
+\def\currentvolume{X}
+ \def\currentissue{X}
+  \def\currentyear{200X}
+   \def\currentmonth{XX}
+    \def\ppages{X--XX}
+    \def\DOI{}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}
+\newtheorem*{main}{Main Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{problem}{Problem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem*{notation}{Notation}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\eps}[1]{{#1}_{\varepsilon}}
+
+
+%% Place the running title of the paper with 40 letters or less in []
+ %% and the full title of the paper in { }.
+\title[Running head with forty characters or less]
+      {Instructions for preparing  \LaTeX\ File\\ for AIMS Journals }
+
+ \email{editorial@aimsciences.org}
+\begin{document}
+\maketitle
+
+
+
+Here below are important steps and instructions on how to prepare
+your final \TeX\ file. Please read carefuly and follow them as close
+as possible since it will expedite the publication process of your
+paper. Thank you very much for your
+cooperation.\\
+
+
+\noindent\textbf{I Some First Steps}
+\begin{enumerate}
+
+\item \textbf{Step 1:}
+
+\begin{compactenum}[i)]
+\item For file prepared in \AmS-\LaTeX\ format:
+Download the class file ``AIMS.cls" from
+the following link and place it to the local folder  where your tex file resides.\\
+\url{http://aimsciences.org/journals/tex-sample/AIMS.cls}.
+
+\item For file prepared in \AmS-\TeX\ format: Please skip this step.
+
+\end{compactenum}
+
+
+\item \textbf{Step 2:}
+
+\begin{compactenum}[i)]
+\item For file prepared in \AmS-\LaTeX\ format:
+Download the \textbf{\AmS-\LaTeX\ template}
+ by clicking the following link and use it as
+a template to prepare your tex file.\\
+\url{http://aimsciences.org/journals/tex-sample/Template_1.tex}.
+
+
+
+\item For file prepared in \AmS-\TeX\ format:
+ Download the \textbf{\AmS-\TeX\ template}
+ by clicking the following link and use it as
+a template to prepare your tex file.\\
+\url{http://aimsciences.org/journals/tex-sample/Template_2.tex}.
+
+!!! \ \textbf{Important note:} Please read carefully all information
+in these templates including those preceded by \% sign.
+
+!!! \ \textbf{Important remark:} For special issue the info. of
+``Communicated by the associate editor name" before abstract is not
+needed.
+
+\end{compactenum}
+
+
+\item \textbf{Step 3:}
+
+\begin{compactenum}[i)]
+\item For file prepared in \AmS-\LaTeX\ format:
+ Compile your paper using \AmS-\LaTeX\ command together with the class file
+``AIMS.cls," making sure the compiling is error-free.
+
+\item For file prepared in \AmS-\TeX\ format:
+ Compile your paper using \AmS-\TeX\ command, making sure the compiling is error-free.
+
+\end{compactenum}
+
+
+\item \textbf{Step 4:} Print out your paper and check.
+\begin{compactenum}[i)]
+         \item Improve the quality of the figures until they are
+          in high resolution and clear if the originals are  not.
+         \item Make sure your paper includes the following important
+         information\\
+             1) Abstract\\
+             2) Full address of each author including country name,
+              placed beneath the title\\
+             3) Email of each author, placed at the end of the paper\\
+             4) Mathematics Subject Classification (MSC) number\\
+             5) Key words and phrases\\
+             6) End proof sign (a blank square aligned to right) for each proof
+         \item Make sure the format of the references match those shown
+         in the ``REFERENCES" section bellow, placing each Mathematical Reviews (MR) number right after  \verb+\+bibitem, e.g. \verb+\+bibitem\{A22\} (MR2082924).
+ \end{compactenum}
+
+\end{enumerate}
+
+\vspace*{15pt} \noindent \textbf{II Instructions}
+
+\begin{enumerate}
+
+
+\item To produce a theorem, lemma, proposition, corollary,  conjecture,
+etc., you need to use the standard command \verb+\+begin\{\dots\} to
+start with, and \verb+\+end\{\dots\} to finish.  All texts in such
+environment will be automatically \textbf{\emph{slanted}}.
+
+\item For a definition, remark, or notation, please use the
+standard commands \verb+\+begin\{\dots\} and \verb+\+end\{\dots\}.
+However all texts in such a environment will be automatically
+\textbf{upright}.
+
+\item For all \textbf{proof}s, please use \verb+\+begin\{proof\} and
+\verb+\+end\{proof\} commands. Do not define your own macros.
+
+\item Make sure all \textbf{math formular numbers} are continuous.
+
+\item Make sure all \textbf{lines}, \textbf{math formulas}
+and \textbf{figures} are \textbf{\textbf{within the limit of 5
+inches in width}}. In particular, formulas can not run to the right
+of equation numbers. Never run out of the bound.
+
+\item Important remarks on Figures.
+
+Figures in PDF,  JPEG or PNG  format are preferred and should be
+called for from the \TeX \, file and sent as separate files.
+
+PostScript figures in EPS (Encapsulated PostScript) format are also
+acceptable and should be called for from the \TeX \, file and sent
+as separate files if one has too much difficulty with the EPS to PDF
+format conversions. The preferred macro package for including EPS
+figures files is the LaTeX graphicx package.
+
+More importantly your paper will be compiled with PDFLaTex or
+PDFTeXify and therefore please make every effort to ensure your
+submissions are compatible, e.g. avoid calling \verb+\+psfrag in the
+tex file.
+
+
+%\begin{enumerate}
+\begin{compactenum}[i)]
+\item Notice that all color figures will be printed in black
+and white in the AIMS journals. \textbf{Make sure that a black-white
+printout of your figure is clear, with high resolution}.
+
+\item All figures should be placed in the body of your paper and
+before the REFERENCES section.
+
+\item In a page with figures, there should be no unnecessary spare space.
+Be sure that each page is fully occupied by figures and texts.
+
+\item Make sure both the memory size and geometric size
+of your figures is as small as possible, while they are \textbf{
+clearly visible of all details.}  For example, a figure file with
+size bigger than 1MB and a paper file with size bigger than 5MB
+could cause some technical inconveniences. Papers with figures of
+poor \textbf{resolution} cannot be accepted.
+
+\item Figures should be  scalable.
+
+\item Again, make sure that all \textbf{figures} are \textbf{\textbf{within the limit of 5
+inches in width}}.  Never run out of the bound.
+ \end{compactenum}
+%\end{enumerate}
+
+ See an example below.
+
+\begin{figure}%[htp]
+\begin{center}
+  % Requires \usepackage{graphicx}
+  % replace aims_logo.eps by your figure file name
+  \includegraphics[width=1.5in]{aims_logo.eps}\\
+  \caption{Here is the Caption of your figure}\label{AIMS}
+  \end{center}
+\end{figure}
+
+\newpage
+
+\item Important remarks on References.
+      \begin{compactenum}[i)]
+
+       \item  Please \textbf{DON'T list any references you never cited} in your paper.
+
+
+      \item Make sure all reference \textbf{indexes} cited in the main text do exist in the REFERENCE section.
+
+       \item  Please \textbf{DON'T use your own definition} in the REFERENCE section.
+
+
+      \item Please  write each reference in three seperate
+      \verb+\+newblocks. Place author
+      names in first \verb+\+newblock, title in second \verb+\+newblock
+      and the rest info. in the third \verb+\+newblock. You may leave first \verb+\+newblock blank if there is no
+      author names, likewise leave second \verb+\+newblock blank if there is no
+      title. Need examples? Please refer to the  references
+      at the end of \textbf{AIMS template}.
+
+
+%\verb+\+bibitem\{A11\}\\
+%     \verb+\+newblock Author names,\\
+%     \verb+\+newblock \emph{Title of the paper},\\
+%     \verb+\+newblock Name of the Journal, \textbf{Vol.} (Year),
+%     StaringPage--EndingPage.\\
+
+
+
+      \item List papers in alphabetic order according to first
+      authors.
+
+      \item Always place the full first name first,
+      then the middle name initial (optional), followed by the last name.
+       If there are multiple authors, use the word `and' to connect the last two authors.
+      See references  \cite {A11}, \cite{A22} and \cite{BFL} for details.
+
+      \item If a reference is a paper in a journal,
+      the title of the paper should be {\bf \emph{slanted}},
+      which can be achieved by putting
+      the title inside the braces: \verb+\+emph\{\dots\}.
+      Only the first character in a paper's title is in capital.
+      When you list a paper from a journal,
+       please ignore the issue number since the page numbers and
+      volume number yield sufficient information to identify the paper.
+      Pay attention to the correct way of placing
+       \textbf{volume number} (in bold face), \textbf{year},
+      \textbf{starting page}--\textbf{ending page}. Note that
+      starting and end page numbers should be separated by
+      \textbf{two hyphen - - }
+      See references  \cite{A22} and \cite{BFL} for details.
+
+       \item If a reference is a book, the title should be put upright,
+        the first letter of each word in the title should be capitalized.
+        See reference
+       \cite{rB} for details.
+
+       \item If a reference is a paper in a conference proceeding,
+        please see the sample reference \cite{Serrin}.
+
+       \item  If the reference is a thesis, please see the sample reference \cite{Zeng}.
+
+       \item
+          It is very valuable to the readers if the references have direct
+       links to the Mathematical Reviews (MR) Database and arXiv database.
+        Therefore, it is necessary to add the MR number (published paper)
+         or arXiv number (preprint paper) for each reference, whenever available.
+      Your help in gathering such information (MR numbers or archive numbers)
+       will ensure such information's accuracy and expedite the process
+       of your paper's publication.
+              The quickest way to find MR numbers is to search
+              at the link:
+                 \url{http://www.ams.org/mrlookup}
+                  or \url{http://www.ams.org/mathscinet/}.
+                 To find the archive number, please click the following
+                 link:\break \url{http://www.arxiv.org}.
+                 You may use any two-combination pertaining to a reference
+                 to find the MR number of the paper, e.g.
+                 last name of one of the authors and the title
+                 (it is not necessary to put the full title);
+                 or last name of one of the authors and the starting page number.
+                 Please check for \textbf{accuracies} of your citation
+                 against what is in the MR database and make your citation
+                 \textbf{consistent} with the MR database. Concerning where to
+                 put these MR or archive numbers, please refer to the references
+               \cite{A22}, \cite{BFL}, \cite{rB}, \cite{Serrin} \cite{quas}
+               and \cite{Te2008}
+               at the end of \textbf{AIMS template}.
+
+%    \end{enumerate}
+       \end{compactenum}
+
+
+\end{enumerate}
+
+You can find various examples in \textbf{AIMS template}. Check it
+out by clicking the
+following link:\\
+\indent\url{http://aimsciences.org/journals/tex-sample/Template_1.tex}
+
+\begin{thebibliography}{99}
+
+\bibitem{A11}
+     \newblock FirstName (or FirstNameInitial.)  MiddleInitial. LastName, % first name middle initial. and then last name.  Only the first character in the paper title is capitalized.
+     \newblock \emph{Title of the paper},
+     \newblock Name of the Journal, \textbf{Volume} (Year), StaringPage--EndingPage.
+
+% Example of paper with MR number:
+\bibitem{A22} (MR2082924)
+     \newblock C.  Wolf,
+     \newblock \emph{A mathematical model for the propagation of a hantavirus in structured populations},
+     \newblock Discrete Continuous Dynam. Systems - B, \textbf{4} (2004), 1065--1089.
+
+% Example of multiple authors:
+\bibitem{BFL} (MR1124979)
+    \newblock Y. Benoist, P. Foulon and F. Labourie, % Use `and' connect the last two authors
+    \newblock \emph{Flots d'Anosov a distributions stable et instable
+     differentiables},
+    \newblock (French) [Anosov flows with stable and unstable differentiable
+     distributions], J. Amer. Math. Soc., \textbf{5} (1992), 33--74.
+
+% Example of a book in the reference:
+\bibitem{rB} (MR1301779)
+     \newblock J.  Smoller,
+     \newblock ``Shock Waves and Reaction-Diffusion Equations,"
+     \newblock 2$^{nd}$ edition,  Springer-Verlag, New York, 1994.
+
+% Example of an article in Academic Press or a book:
+\bibitem{Serrin} (MR0402274)
+    \newblock J. Serrin,
+    \newblock  \emph{Gradient estimates for solutions of nonlinear elliptic
+                     and parabolic equations},
+    \newblock  in ``Contributions to Nonlinear Functional Analysis" (eds. E.H. Zarantonello and Author 2),
+                Academic Press, (1971), 33--75.
+% Example of a thesis:
+\bibitem{Zeng}
+    \newblock FirstName LastName,
+    \newblock  ``Torsion Cycles and Set Theoretic Complete Intersection,"
+    \newblock  Ph.D thesis, Washington University in St. Louis, 2006.
+
+% Example of a preprint article with 7 digits archive number:
+\bibitem{quas}
+\newblock M. Entov, L. Polterovich and F. Zapolsky,
+\newblock \emph{Quasi-morphisms
+\newblock and the Poisson bracket}, preprint, \arXiv{math/0605406}.
+
+% Example of a preprint article with 8 digits archive number:
+\bibitem{Te2008}
+\newblock A. Teplinsky,
+\newblock \emph{Herman's theory revisited}, preprint,
+\newblock \arXiv{0707.0078}.
+
+% No author names:
+\bibitem{Whho}
+\newblock
+\newblock ``SARS Expert Committee, SARS in Hong Kong: From Experience to
+Action," Report of Hong Kong SARS Expert Committee,
+\newblock 2003. Available from: \url{http://www.sars-expertcom.gov.hk/english/reports/reports.html}.
+
+% No title:
+\bibitem{tachet}
+\newblock F. Abergel and R. Tachet,
+\newblock
+\newblock work in progress.
+
+\end{thebibliography}
+
+\medskip
+% The data information below will be filled by AIMS editorial staff
+Received xxxx 20xx; revised xxxx 20xx.
+\medskip
+
+\end{document}
+
+\end{document}

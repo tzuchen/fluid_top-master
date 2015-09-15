@@ -1,0 +1,6 @@
+latex DynarumPoster_Caltech.tex
+bibtex DynarumPoster_Caltech
+latex DynarumPoster_Caltech.tex
+
+dvipdf  DynarumPoster_Caltech.dvi
+evince  DynarumPoster_Caltech.pdf

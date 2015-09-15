@@ -1,0 +1,3 @@
+latex finaltalk_slides.tex
+dvipdf finaltalk_slides.dvi
+evince finaltalk_slides.pdf
